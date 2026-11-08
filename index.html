@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>pop · Popping the Orange Bubble</title>
+  <meta name="description" content="The unofficial student guide to Princeton: clubs, eating clubs, classes and deadlines, from students who've been there.">
+  <link rel="icon" href="assets/bubble.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="page">
+  <header data-header="home"></header>
+
+  <main class="container hero">
+    <div class="hero-copy">
+      <h1>Popping the <em><span class="orange">Orange</span> Bubble.</em></h1>
+      <p>Everything you're supposed to just know, from students who've been there.</p>
+      <form class="ask-box" action="ask.html" method="get">
+        <label class="sr-only" for="ask">Ask Pop a question</label>
+        <input id="ask" name="q" type="text" placeholder="Ask anything about Princeton…" autocomplete="off">
+        <button class="btn" type="submit">Ask Pop <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </form>
+    </div>
+    <div class="bubble-stage" id="stage" aria-hidden="false"></div>
+  </main>
+
+  <footer data-footer></footer>
+</div>
+<script src="js/shared.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>
