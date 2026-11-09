@@ -13,7 +13,16 @@ window.POP_DATA = {
       more: 'Most students join an eating club in the spring of sophomore year, so freshmen have plenty of time to visit clubs for meals and events first.',
       quote: '“Go to a few meals at different clubs first. The vibe tells you more than the reputation.”',
       quoteBy: 'Sample quote · Class of ’27',
-      sources: [{ title: 'Bicker, explained', href: '#' }]
+      sources: [{ title: 'Cottage bicker, from a member', href: 'clubs.html?club=cottage' }]
+    },
+    cottage: {
+      q: 'What’s Cottage bicker like?',
+      keywords: ['cottage'],
+      a: 'It’s two days of quick, 5-minute conversations with lots of different members. The club is roughly half athletes and half non-athletes, with a lot of KA and Pi Phi members.',
+      more: 'The club is also beautiful, especially outside: volleyball, pickleball, cornhole and a big turf field.',
+      quote: '“Don’t be afraid to talk to people you don’t know, or who come from a different background than you. Having people from different groups in your corner really helps.”',
+      quoteBy: 'From a Cottage member',
+      sources: [{ title: 'Cottage', href: 'clubs.html?club=cottage' }]
     },
     when: {
       q: 'When do I actually join an eating club?',
@@ -45,18 +54,32 @@ window.POP_DATA = {
   },
   fallback: 'Good question. In the full app, Pop answers this from pages students have written. For this prototype, try one of the suggestions.',
 
-  // Club page: one card at a time.
-  club: {
-    category: 'Consulting · sample club',
-    name: 'Strategy & Consulting Group',
-    vibe: '“Driven, but more collaborative than people expect.”',
-    facts: 'Very selective · 4–6 hrs a week · Apps open early Sep',
-    cards: [
-      { label: 'Getting in', text: 'A short application, then a case interview. No experience expected.' },
-      { label: 'When', text: 'Info session in early September. Offers by mid-October.' },
-      { label: 'From a member', quote: '“I wasn’t a finance person and it didn’t matter.”', by: 'Sample quote · Class of ’27' },
-      { label: 'From the outside', quote: '“Pre-professional reputation, but friendlier than you’d think.”', by: 'Sample quote · non-member, Class of ’27' }
-    ]
+  // Club pages: one card at a time. Open a club with clubs.html?club=<id>.
+  clubs: {
+    consulting: {
+      category: 'Consulting · sample club',
+      name: 'Strategy & Consulting Group',
+      vibe: '“Driven, but more collaborative than people expect.”',
+      facts: [['gauge', 'Very selective'], ['clock', '4–6 hrs a week'], ['cal', 'Apps open early Sep']],
+      cards: [
+        { icon: 'key', label: 'Getting in', text: 'A short application, then a case interview. No experience expected.' },
+        { icon: 'cal', label: 'When', text: 'Info session in early September. Offers by mid-October.' },
+        { icon: 'user', label: 'From a member', quote: '“I wasn’t a finance person and it didn’t matter.”', by: 'Sample quote · Class of ’27' },
+        { icon: 'eye', label: 'From the outside', quote: '“Pre-professional reputation, but friendlier than you’d think.”', by: 'Sample quote · non-member, Class of ’27' }
+      ]
+    },
+    cottage: {
+      category: 'Eating club · bicker',
+      name: 'Cottage',
+      vibe: 'Two days of quick conversations, a mixed crowd, and one of the best outdoor spaces on the Street.',
+      facts: [['key', 'Bicker club'], ['clock', '2-day bicker'], ['users', 'About half athletes']],
+      cards: [
+        { icon: 'key', label: 'How bicker works', text: 'Two days of quick, 5-minute conversations with lots of different members.' },
+        { icon: 'users', label: 'Who’s there', text: 'Roughly half athletes, half non-athletes. A big chunk of members are in KA (Kappa Alpha) and Pi Phi, so you’ll see a lot of them around.' },
+        { icon: 'sparkle', label: 'Biggest tip', quote: '“Don’t be afraid to talk to people you don’t know, or who come from a different background than you. Having people from different groups in your corner really helps.”', by: 'From a Cottage member' },
+        { icon: 'pin', label: 'The club', text: 'Beautiful, especially outside: volleyball, pickleball, cornhole and a big turf field.' }
+      ]
+    }
   },
 
   // Quiz: four questions, then a short list.

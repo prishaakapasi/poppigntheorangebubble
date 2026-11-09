@@ -13,6 +13,7 @@
 <body>
 <div class="page">
   <header data-header="clubs"></header>
+  <script>if (new URLSearchParams(location.search).get('club') === 'cottage') document.querySelector('[data-header]').setAttribute('data-header', 'street');</script>
   <main class="club-main" id="app"></main>
   <footer data-footer></footer>
 </div>

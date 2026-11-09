@@ -1,14 +1,14 @@
 /* Club page: one column, one card at a time. */
 (function () {
-  var P = window.Pop, C = window.POP_DATA.club, app = document.getElementById('app');
+  var P = window.Pop, CLUBS = window.POP_DATA.clubs, app = document.getElementById('app');
+  var id = new URLSearchParams(location.search).get('club');
+  var C = CLUBS[id] || CLUBS.consulting;
+  document.title = C.name + ' · pop';
   var esc = P.escapeHtml, icon = P.icon;
-  var CARD_ICONS = ['key', 'cal', 'user', 'eye'];
   var i = 0;
 
-  var facts = C.facts.split(' · ');
-  var FACT_ICONS = ['gauge', 'clock', 'cal'];
-  var factsHtml = facts.map(function (f, k) {
-    return '<span style="display:inline-flex;align-items:center;gap:6px">' + icon(FACT_ICONS[k] || 'sparkle') + esc(f) + '</span>';
+  var factsHtml = C.facts.map(function (f) {
+    return '<span style="display:inline-flex;align-items:center;gap:6px">' + icon(f[0]) + esc(f[1]) + '</span>';
   }).join('');
 
   app.innerHTML =
@@ -35,7 +35,7 @@
 
   function render() {
     var c = C.cards[i];
-    var label = '<p class="eyebrow" style="display:flex;align-items:center;gap:8px">' + icon(CARD_ICONS[i]) + esc(c.label) + '</p>';
+    var label = '<p class="eyebrow" style="display:flex;align-items:center;gap:8px">' + icon(c.icon) + esc(c.label) + '</p>';
     card.innerHTML = c.quote
       ? '<figure class="card-inner slide">' + label + '<blockquote>' + esc(c.quote) + '</blockquote><figcaption>' + esc(c.by) + '</figcaption></figure>'
       : '<div class="card-inner slide">' + label + '<p class="statement">' + esc(c.text) + '</p></div>';
