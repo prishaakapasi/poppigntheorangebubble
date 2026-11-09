@@ -55,7 +55,7 @@
     var whys = ['Matches your ' + label + ' interest · fits ' + time + ' a week', 'Popular with freshmen · ' + applyNote, 'Members say it’s a good first club · flexible time'];
     var list = D.quizResults[interest].map(function (c, k) {
       return '<a class="rise" href="' + c[1] + '"><span class="n">0' + (k + 1) + '</span>' +
-        '<span style="flex:1"><span class="name">' + esc(c[0]) + ' (sample)</span><span class="why">' + esc(whys[k]) + '</span></span>' + icon('arrow') + '</a>';
+        '<span style="flex:1"><span class="name">' + esc(c[0]) + (c[2] === false ? '' : ' (sample)') + '</span><span class="why">' + esc(c[3] || whys[k]) + '</span></span>' + icon('arrow') + '</a>';
     }).join('');
     panel.innerHTML =
       '<div class="rise"><p class="eyebrow">Your short list</p><h1>Three clubs worth a look.</h1>' +

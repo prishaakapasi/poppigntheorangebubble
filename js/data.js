@@ -24,6 +24,15 @@ window.POP_DATA = {
       quoteBy: 'From a Cottage member',
       sources: [{ title: 'Cottage', href: 'clubs.html?club=cottage' }]
     },
+    dance: {
+      q: 'Do I need dance experience for Naacho or Bhangra?',
+      keywords: ['dance', 'naacho', 'bhangra', 'audition'],
+      a: 'No. Auditions are skill-based, but students say you really don’t need prior experience. You just need to dance somewhat decently and show potential.',
+      more: 'Both groups are pretty laid back, and PB (Princeton Bhangra) is a bit more tight-knit. PB has a lot of Tower members, and Naacho now has a lot of Charter.',
+      quote: '“Dance groups can be a good community!”',
+      quoteBy: 'From a student',
+      sources: [{ title: 'Naacho & Princeton Bhangra', href: 'clubs.html?club=dance' }]
+    },
     when: {
       q: 'When do I actually join an eating club?',
       keywords: ['when', 'join', 'eating club'],
@@ -68,6 +77,18 @@ window.POP_DATA = {
         { icon: 'eye', label: 'From the outside', quote: '“Pre-professional reputation, but friendlier than you’d think.”', by: 'Sample quote · non-member, Class of ’27' }
       ]
     },
+    dance: {
+      category: 'Dance · auditions',
+      name: 'Naacho & Princeton Bhangra',
+      vibe: 'Skill-based auditions, but no experience required. Both groups are pretty laid back, and dance groups can be a great community.',
+      facts: [['music', 'Audition'], ['sparkle', 'No experience needed'], ['users', 'Laid back']],
+      cards: [
+        { icon: 'key', label: 'Getting in', text: 'Auditions are skill-based, but they mean it when they say you don’t need prior experience. Dance somewhat decently and show potential.' },
+        { icon: 'users', label: 'The vibe', text: 'Both groups are pretty laid back. PB (Princeton Bhangra) is a bit more tight-knit than Naacho.' },
+        { icon: 'pin', label: 'Eating clubs', text: 'Some dance groups lean toward certain eating clubs, but these two don’t really right now. PB has a lot of Tower people. Naacho used to be a lot of Cap and Tower, and now has a lot of Charter.' },
+        { icon: 'sparkle', label: 'From a student', quote: '“Dance groups can be a good community!”', by: 'From a student · details can change year to year' }
+      ]
+    },
     cottage: {
       category: 'Eating club · bicker',
       name: 'Cottage',
@@ -108,7 +129,7 @@ window.POP_DATA = {
   quizResults: {
     biz: [['Strategy & Consulting Group', 'clubs.html'], ['Investment Society', '#'], ['Startup Studio', '#']],
     tech: [['Hackers Guild', '#'], ['Robotics Team', '#'], ['App Studio', '#']],
-    arts: [['Improv Troupe', '#'], ['Student Film Society', '#'], ['A Cappella Group', '#']],
+    arts: [['Naacho', 'clubs.html?club=dance', false, 'Dance · audition, no experience needed · laid back'], ['Princeton Bhangra', 'clubs.html?club=dance', false, 'Dance · audition, no experience needed · tight-knit'], ['Improv Troupe', '#']],
     serve: [['Tutoring Collective', '#'], ['Debate Union', '#'], ['Environmental Action', '#']]
   }
 };

@@ -2,8 +2,8 @@
    that reveal more only when asked. */
 (function () {
   var P = window.Pop, D = window.POP_DATA, app = document.getElementById('app');
-  var ORDER = ['bicker', 'cottage', 'consult', 'intro', 'when'];
-  var STARTER_ICONS = { bicker: 'users', cottage: 'pin', when: 'cal', consult: 'briefcase', intro: 'book' };
+  var ORDER = ['bicker', 'cottage', 'dance', 'consult', 'intro', 'when'];
+  var STARTER_ICONS = { bicker: 'users', cottage: 'pin', dance: 'music', when: 'cal', consult: 'briefcase', intro: 'book' };
   var state = { asked: [], typing: false, open: {} };
   var esc = P.escapeHtml, icon = P.icon;
   var mini = P.bubble({ stroke: 6 });
