@@ -161,6 +161,7 @@ button { font: inherit; color: inherit; }
 .card { background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--radius); padding: 36px; min-height: 280px; overflow: hidden; }
 .card-inner { margin: 0; display: flex; flex-direction: column; gap: 16px; }
 .card .statement, .card blockquote { margin: 0; font-family: var(--serif); font-size: 34px; line-height: 1.15; letter-spacing: -.02em; }
+.card .card-text { margin: 0; font-size: 19px; line-height: 1.55; color: var(--text-2); max-width: 600px; }
 .card figcaption { font-size: 14px; color: var(--muted); }
 .card-nav { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
 .dots { display: flex; gap: 6px; margin-right: auto; }

@@ -24,6 +24,15 @@ window.POP_DATA = {
       quoteBy: 'From a Cottage member',
       sources: [{ title: 'Cottage', href: 'clubs.html?club=cottage' }]
     },
+    acappella: {
+      q: 'Which a cappella group is right for me?',
+      keywords: ['cappella', 'capella', 'acaprez', 'sing', 'nassoon', 'footnote', 'tigertone', 'tigerlil', 'tigression', 'katzenjammer', 'wildcat', 'roaring', 'nassoul', 'shere khan'],
+      a: 'There are eight Acaprez groups. Low voice: Nassoons and Tigertones (both currently all men) and Footnotes (mixed gender). All-female: Tigerlilies, Tigressions and Wildcats. Mixed: Roaring 20 and Katzenjammers.',
+      more: 'Outside Acaprez, Old NasSoul sings R&B and soul, and Shere Khan does indie and alternative. Nassoons are the oldest group and known for a strong alumni network, Footnotes sing upbeat music with a wide repertoire, and Katzenjammers have a jazzy sound.',
+      quote: '',
+      quoteBy: '',
+      sources: [{ title: 'All singing groups', href: 'clubs.html?club=acappella' }]
+    },
     dance: {
       q: 'Do I need dance experience for Naacho or Bhangra?',
       keywords: ['dance', 'naacho', 'bhangra', 'audition'],
@@ -75,6 +84,24 @@ window.POP_DATA = {
         { icon: 'cal', label: 'When', text: 'Info session in early September. Offers by mid-October.' },
         { icon: 'user', label: 'From a member', quote: '“I wasn’t a finance person and it didn’t matter.”', by: 'Sample quote · Class of ’27' },
         { icon: 'eye', label: 'From the outside', quote: '“Pre-professional reputation, but friendlier than you’d think.”', by: 'Sample quote · non-member, Class of ’27' }
+      ]
+    },
+    acappella: {
+      category: 'Singing · auditions',
+      name: 'A cappella & singing groups',
+      vibe: 'Eight Acaprez groups, plus Old NasSoul and Shere Khan. Tap through to find your sound.',
+      facts: [['music', '10 groups'], ['users', 'Low voice, mixed & all-female'], ['key', 'Auditions']],
+      cards: [
+        { icon: 'music', label: 'Low voice', title: 'Nassoons', text: 'Low voice, currently all men. The oldest group, mostly Cap, and known for a very strong alumni network.' },
+        { icon: 'music', label: 'Low voice', title: 'Footnotes', text: 'Low voice, mixed gender. Fun, upbeat music with a wide range of repertoire. Members are a mix of TI, Cap and Terrace.' },
+        { icon: 'music', label: 'Low voice', title: 'Tigertones', text: 'Low voice, currently all men. Eating club ties: not sure yet.' },
+        { icon: 'music', label: 'Mixed voice', title: 'Roaring 20', text: 'Co-ed, mixed voice and mixed gender. Eating club ties: not sure yet.' },
+        { icon: 'music', label: 'All-female', title: 'Tigerlilies', text: 'The oldest all-female group. Eating club ties: not sure yet.' },
+        { icon: 'music', label: 'All-female', title: 'Tigressions', text: 'All-female, and also one of the older groups. Eating club ties: not sure yet.' },
+        { icon: 'music', label: 'Mixed gender', title: 'Katzenjammers', text: 'Jazzy sound, mixed gender. Not known for a particular eating club.' },
+        { icon: 'music', label: 'All-female', title: 'Wildcats', text: 'All-female. Know them? Add what you know.' },
+        { icon: 'sparkle', label: 'R&B and soul', title: 'Old NasSoul', text: 'Not part of Acaprez. Low voice, mixed gender, singing R&B and soul.' },
+        { icon: 'sparkle', label: 'Indie and alternative', title: 'Shere Khan', text: 'Not part of Acaprez. Mixed voice and mixed gender, with a more indie and alternative repertoire.' }
       ]
     },
     dance: {
@@ -129,7 +156,7 @@ window.POP_DATA = {
   quizResults: {
     biz: [['Strategy & Consulting Group', 'clubs.html'], ['Investment Society', '#'], ['Startup Studio', '#']],
     tech: [['Hackers Guild', '#'], ['Robotics Team', '#'], ['App Studio', '#']],
-    arts: [['Naacho', 'clubs.html?club=dance', false, 'Dance · audition, no experience needed · laid back'], ['Princeton Bhangra', 'clubs.html?club=dance', false, 'Dance · audition, no experience needed · tight-knit'], ['Improv Troupe', '#']],
+    arts: [['Naacho', 'clubs.html?club=dance', false, 'Dance · audition, no experience needed · laid back'], ['Princeton Bhangra', 'clubs.html?club=dance', false, 'Dance · audition, no experience needed · tight-knit'], ['A cappella & singing groups', 'clubs.html?club=acappella', false, 'Singing · 8 Acaprez groups plus Old NasSoul and Shere Khan']],
     serve: [['Tutoring Collective', '#'], ['Debate Union', '#'], ['Environmental Action', '#']]
   }
 };

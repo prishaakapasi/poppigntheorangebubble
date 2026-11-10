@@ -38,13 +38,15 @@
     var label = '<p class="eyebrow" style="display:flex;align-items:center;gap:8px">' + icon(c.icon) + esc(c.label) + '</p>';
     card.innerHTML = c.quote
       ? '<figure class="card-inner slide">' + label + '<blockquote>' + esc(c.quote) + '</blockquote><figcaption>' + esc(c.by) + '</figcaption></figure>'
-      : '<div class="card-inner slide">' + label + '<p class="statement">' + esc(c.text) + '</p></div>';
+      : c.title
+        ? '<div class="card-inner slide">' + label + '<h2 class="statement" style="font-weight:400">' + esc(c.title) + '</h2><p class="card-text">' + esc(c.text) + '</p></div>'
+        : '<div class="card-inner slide">' + label + '<p class="statement">' + esc(c.text) + '</p></div>';
     dots.forEach(function (d, k) { d.className = k === i ? 'on' : ''; });
     prev.hidden = i === 0;
     var last = i === C.cards.length - 1;
     next.innerHTML = last
       ? icon('refresh') + 'Start over'
-      : esc(C.cards[i + 1].label) + icon('arrow');
+      : esc(C.cards[i + 1].title || C.cards[i + 1].label) + icon('arrow');
   }
 
   next.addEventListener('click', function () { i = (i + 1) % C.cards.length; render(); });
