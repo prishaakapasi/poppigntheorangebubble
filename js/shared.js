@@ -72,7 +72,7 @@
     { label: 'Ask Pop', href: 'ask.html', icon: 'chat', id: 'ask' },
     { label: 'Clubs', href: 'clubs.html', icon: 'users', id: 'clubs' },
     { label: 'Find your clubs', href: 'quiz.html', icon: 'compass', id: 'quiz' },
-    { label: 'Explore the Street', href: 'clubs.html?club=cottage', icon: 'pin', id: 'street' },
+    { label: 'Explore the Street', href: 'clubs.html?view=street', icon: 'pin', id: 'street' },
     { label: 'Classes', href: '#', icon: 'book', id: 'classes' },
     { label: 'Timeline', href: '#', icon: 'cal', id: 'timeline' }
   ];

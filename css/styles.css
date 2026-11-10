@@ -213,3 +213,17 @@ button { font: inherit; color: inherit; }
   .ambient { opacity: 1; }
   .ambient-burst { opacity: 0; }
 }
+/* Club directory + Street list (added) */
+.back-link { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); text-decoration: none; margin-bottom: -16px; padding: 6px 0; }
+.dir-section { display: flex; flex-direction: column; gap: 12px; }
+.dir-title { margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.dir-list { display: flex; flex-direction: column; }
+.dir-row { display: flex; align-items: center; gap: 16px; padding: 18px 4px; border-top: 1px solid var(--hairline); text-decoration: none; transition: background .15s; }
+.dir-row:last-of-type { border-bottom: 1px solid var(--hairline); }
+.dir-row:hover { background: var(--surface); color: var(--ink); }
+.dir-icon { width: 40px; height: 40px; flex: none; border-radius: 50%; background: var(--pill); display: flex; align-items: center; justify-content: center; color: var(--orange-ink); }
+.dir-text { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.dir-name { font-family: var(--serif); font-size: 24px; letter-spacing: -.01em; }
+.dir-blurb { font-size: 14px; color: var(--muted); }
+.dir-row.muted .dir-name { color: var(--text-2); }
+.dir-row.muted .dir-icon { background: none; border: 1px dashed #CFC6B8; color: var(--muted); }
