@@ -88,7 +88,7 @@
     el.innerHTML = '<div class="container">' + LOGO +
       '<button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav">' + icon('menu') + 'Menu</button>' +
       '<nav class="nav" id="main-nav" aria-label="Main">' + links + '</nav>' +
-      '<a class="nav-cta" href="#">' + icon('plus') + 'Add what you know</a></div>';
+      '<a class="nav-cta" href="add.html"' + (current === 'add' ? ' aria-current="page"' : '') + '>' + icon('plus') + 'Add what you know</a></div>';
     var btn = el.querySelector('.menu-btn');
     btn.addEventListener('click', function () {
       var open = el.classList.toggle('open');

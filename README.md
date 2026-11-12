@@ -55,6 +55,35 @@ You don't need a real AI behind Ask Pop to learn whether people want it:
 2. A teammate answers live (in person, or by quickly adding the answer to `data.js` before the session).
 3. Afterward ask: Was this more useful than asking a friend? Would you trust it? What would make you trust it more?
 
+## Backend (Vercel)
+
+The site still works as plain files. On Vercel it also gets a small backend from the `api/` folder:
+
+| Route | What it does |
+| --- | --- |
+| `POST /api/submit` | Saves an "Add what you know" submission. Nothing is public until approved. |
+| `GET /api/approved?target=<id>` | Approved submissions for one club page. |
+| `/api/review` | Team only: list, approve or reject submissions; see questions Ask Pop couldn't answer. |
+| `POST /api/ask` | Ask Pop via Gemini, limited to this site's content and approved submissions. |
+
+### One-time setup
+
+1. **Database:** Vercel project → **Storage** → **Create Database** → **Upstash for Redis** (free plan) → connect it to this project. This adds `KV_REST_API_URL` and `KV_REST_API_TOKEN` automatically.
+2. **Review key:** Settings → Environment Variables → add `ADMIN_KEY` with a long password your team shares (at least 8 characters).
+3. **Gemini (optional):** create a key at https://aistudio.google.com/apikey and add it as `GEMINI_API_KEY`. Without it, Ask Pop uses the answers in `js/data.js`. `GEMINI_MODEL` can override the default model (`gemini-3.5-flash`).
+4. **Redeploy** (Deployments → ⋯ → Redeploy) so the new variables take effect.
+
+Never put any of these keys in the code or commit them.
+
+### Reviewing submissions
+
+Open `/admin.html`, enter the `ADMIN_KEY`, and approve or reject. Reject anything that names individuals, generalizes about who belongs in a group, or isn't true. Approved answers appear on that club's page, labeled **Fact** or **Student take**, and Ask Pop can use them.
+
+### Notes
+
+- The GitHub Pages copy has no backend of its own; it calls the Vercel one (`apiBase` in `js/data.js`). If the Vercel address changes, update it there and in `api/_lib.js` (`ALLOWED_ORIGINS`).
+- Submissions are anonymous (class year and connection only), limited to 5 per hour per address, and Ask Pop to 30 questions per hour.
+
 ## Structure
 
 ```
@@ -69,6 +98,11 @@ js/home.js        Home bubbles
 js/ask.js         Ask Pop chat
 js/club.js        Club cards
 js/quiz.js        Quiz
+js/add.js         Add what you know (filtered questions)
+js/admin.js       Team review page
+add.html          Add what you know
+admin.html        Team review page
+api/              Backend routes (Vercel)
 assets/bubble.svg Favicon
 ```
 

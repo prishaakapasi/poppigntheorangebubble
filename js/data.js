@@ -18,8 +18,8 @@ window.POP_DATA = {
     cottage: {
       q: 'What’s Cottage bicker like?',
       keywords: ['cottage'],
-      a: 'It’s two days of quick, 5-minute conversations with lots of different members. The club is roughly half athletes and half non-athletes, with a lot of KA and Pi Phi members.',
-      more: 'The club is also beautiful, especially outside: volleyball, pickleball, cornhole and a big turf field.',
+      a: 'It’s two days of quick, 5-minute conversations with lots of different members. One member’s biggest tip: talk to people you don’t know, including people from different backgrounds than you.',
+      more: 'One member described it as a mix of athletes and non-athletes, though who’s in a club changes a lot from class to class. The club is also beautiful, especially outside: volleyball, pickleball, cornhole and a big turf field.',
       quote: '“Don’t be afraid to talk to people you don’t know, or who come from a different background than you. Having people from different groups in your corner really helps.”',
       quoteBy: 'From a Cottage member',
       sources: [{ title: 'Cottage', href: 'clubs.html?club=cottage' }]
@@ -70,7 +70,7 @@ window.POP_DATA = {
       sources: [{ title: 'Classes, ranked by students', href: '#' }]
     }
   },
-  fallback: 'Good question. In the full app, Pop answers this from pages students have written. For this prototype, try one of the suggestions.',
+  fallback: 'Pop doesn’t have student info on that yet. We’ve noted it as something upperclassmen should answer.',
 
   // Club pages: one card at a time. Open a club with clubs.html?club=<id>.
   clubs: {
@@ -91,6 +91,7 @@ window.POP_DATA = {
       name: 'A cappella & singing groups',
       vibe: 'Eight Acaprez groups, plus Old NasSoul and Shere Khan. Tap through to find your sound.',
       facts: [['music', '10 groups'], ['users', 'Low voice, mixed & all-female'], ['key', 'Auditions']],
+      updated: 'Nov 2026',
       cards: [
         { icon: 'music', label: 'Low voice', title: 'Nassoons', text: 'Low voice, currently all men. The oldest group, mostly Cap, and known for a very strong alumni network.' },
         { icon: 'music', label: 'Low voice', title: 'Footnotes', text: 'Low voice, mixed gender. Fun, upbeat music with a wide range of repertoire. Members are a mix of TI, Cap and Terrace.' },
@@ -109,26 +110,47 @@ window.POP_DATA = {
       name: 'Naacho & Princeton Bhangra',
       vibe: 'Skill-based auditions, but no experience required. Both groups are pretty laid back, and dance groups can be a great community.',
       facts: [['music', 'Audition'], ['sparkle', 'No experience needed'], ['users', 'Laid back']],
+      updated: 'Nov 2026',
       cards: [
-        { icon: 'key', label: 'Getting in', text: 'Auditions are skill-based, but they mean it when they say you don’t need prior experience. Dance somewhat decently and show potential.' },
-        { icon: 'users', label: 'The vibe', text: 'Both groups are pretty laid back. PB (Princeton Bhangra) is a bit more tight-knit than Naacho.' },
-        { icon: 'pin', label: 'Eating clubs', text: 'Some dance groups lean toward certain eating clubs, but these two don’t really right now. PB has a lot of Tower people. Naacho used to be a lot of Cap and Tower, and now has a lot of Charter.' },
-        { icon: 'sparkle', label: 'From a student', quote: '“Dance groups can be a good community!”', by: 'From a student · details can change year to year' }
+        { icon: 'key', kind: 'fact', label: 'Getting in', text: 'Auditions are skill-based, but they mean it when they say you don’t need prior experience. Dance somewhat decently and show potential.' },
+        { icon: 'users', kind: 'take', label: 'The vibe', text: 'Both groups are pretty laid back. PB (Princeton Bhangra) is a bit more tight-knit than Naacho.' },
+        { icon: 'pin', kind: 'take', label: 'Eating clubs', text: 'One student’s view: these two groups don’t lean strongly toward any eating club right now. Lately PB has had more Tower members and Naacho more Charter, but that shifts from year to year.' },
+        { icon: 'sparkle', kind: 'take', label: 'From a student', quote: '“Dance groups can be a good community!”', by: 'From a student · details can change year to year' }
       ]
     },
     cottage: {
       category: 'Eating club · bicker',
       name: 'Cottage',
       vibe: 'Two days of quick conversations, a mixed crowd, and one of the best outdoor spaces on the Street.',
-      facts: [['key', 'Bicker club'], ['clock', '2-day bicker'], ['users', 'About half athletes']],
+      facts: [['key', 'Bicker club'], ['clock', '2-day bicker'], ['pin', 'Big outdoor space']],
+      updated: 'Nov 2026',
       cards: [
-        { icon: 'key', label: 'How bicker works', text: 'Two days of quick, 5-minute conversations with lots of different members.' },
-        { icon: 'users', label: 'Who’s there', text: 'Roughly half athletes, half non-athletes. A big chunk of members are in KA (Kappa Alpha) and Pi Phi, so you’ll see a lot of them around.' },
-        { icon: 'sparkle', label: 'Biggest tip', quote: '“Don’t be afraid to talk to people you don’t know, or who come from a different background than you. Having people from different groups in your corner really helps.”', by: 'From a Cottage member' },
-        { icon: 'pin', label: 'The club', text: 'Beautiful, especially outside: volleyball, pickleball, cornhole and a big turf field.' }
+        { icon: 'key', kind: 'fact', label: 'How bicker works', text: 'Two days of quick, 5-minute conversations with lots of different members.' },
+        { icon: 'users', kind: 'take', label: 'Who’s there', text: 'One member described it as roughly half athletes and half non-athletes. Membership changes a lot from class to class, so the best way to know is to visit and meet people yourself.' },
+        { icon: 'sparkle', kind: 'take', label: 'Biggest tip', quote: '“Don’t be afraid to talk to people you don’t know, or who come from a different background than you. Having people from different groups in your corner really helps.”', by: 'From a Cottage member' },
+        { icon: 'pin', kind: 'fact', label: 'The club', text: 'Beautiful, especially outside: volleyball, pickleball, cornhole and a big turf field.' }
       ]
     }
   },
+
+  // The eleven eating clubs. Clubs without a hand-written page still get one,
+  // built from approved "Add what you know" submissions.
+  eatingClubs: [
+    { id: 'cannon-dial-elm', name: 'Cannon Dial Elm' },
+    { id: 'cap-and-gown', name: 'Cap and Gown' },
+    { id: 'charter', name: 'Charter' },
+    { id: 'cloister', name: 'Cloister' },
+    { id: 'colonial', name: 'Colonial' },
+    { id: 'cottage', name: 'Cottage' },
+    { id: 'ivy', name: 'Ivy' },
+    { id: 'quadrangle', name: 'Quadrangle' },
+    { id: 'terrace', name: 'Terrace' },
+    { id: 'tiger-inn', name: 'Tiger Inn' },
+    { id: 'tower', name: 'Tower' }
+  ],
+
+  // Where the backend lives. Same site on Vercel; GitHub Pages calls the Vercel copy.
+  apiBase: location.hostname.endsWith('github.io') ? 'https://poppigntheorangebubble.vercel.app' : '',
 
   // Quiz: four questions, then a short list.
   quiz: [
