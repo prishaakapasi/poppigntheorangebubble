@@ -50,7 +50,7 @@
     }).then(function (r) { if (!r.ok) throw new Error('off'); return r.json(); })
       .then(function (j) {
         if (!j || !j.answer) throw new Error('empty');
-        item.ai = { a: j.answer, known: !!j.known, source: j.source || '' };
+        item.ai = { a: j.answer, known: !!j.known, source: j.source || '', sourceName: j.sourceName || '' };
       })
       .catch(function () {
         var k = findKey(text);            // backend off: use the team's notes if a keyword matches
@@ -82,7 +82,8 @@
 
   function answerFor(item) {
     if (item.ai) {
-      var src = item.ai.source && pageName(item.ai.source) ? [{ title: pageName(item.ai.source), href: 'clubs.html?club=' + item.ai.source }] : [];
+      var srcName = item.ai.sourceName || pageName(item.ai.source);
+      var src = item.ai.source && srcName ? [{ title: srcName, href: 'clubs.html?club=' + item.ai.source }] : [];
       return { a: item.ai.a, more: '', quote: '', quoteBy: '', sources: src, unknown: !item.ai.known };
     }
     if (item.key !== 'custom') return D.answers[item.key];

@@ -32,6 +32,7 @@
     help: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5V14M12 17h.01"/>',
     send: '<path d="M4 12l16-8-6 16-2-6z"/>',
     flame: '<path d="M12 21c4 0 7-2.7 7-6.5 0-4.5-4-6.5-4.5-10.5C11 6 9 9 9 11c-1-.5-1.5-1.5-1.7-2.5C6 10 5 12 5 14.5 5 18.3 8 21 12 21z"/>',
+    search: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/>',
     menu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
     leaf: '<path d="M5 19C5 10 11 4 20 4c0 9-6 15-15 15z"/><path d="M5 19l8-8"/>'
   };
@@ -110,5 +111,6 @@
     if (footer) renderFooter(footer);
   });
 
-  window.Pop = { icon: icon, bubble: bubble, burstLines: burstLines, BIG_BURST: BIG_BURST, escapeHtml: escapeHtml, LOGO: LOGO };
+  function slug(t) { return String(t).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60); }
+  window.Pop = { slug: slug, icon: icon, bubble: bubble, burstLines: burstLines, BIG_BURST: BIG_BURST, escapeHtml: escapeHtml, LOGO: LOGO };
 })();

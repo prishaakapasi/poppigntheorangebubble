@@ -49,7 +49,8 @@
 
   var s = { step: 0, type: null, target: null, targetName: '', connection: null, answers: {}, classYear: '', error: '', sending: false };
 
-  function slug(t) { return t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60); }
+  var slug = P.slug, ORGS = window.POP_ORGS || [], PAGES = window.POP_ORG_PAGES || {};
+  function orgId(name) { return PAGES[name] || slug(name); }
   function setTarget(id, name) { s.target = id; s.targetName = name; }
 
   // Arriving from a club page: skip the first two steps.
@@ -61,6 +62,8 @@
     var g = GROUPS.filter(function (x) { return x.id === target; })[0];
     if (type === 'eating' && e) { setTarget(e.id, e.name); s.step = 2; }
     if (type === 'club' && g) { setTarget(g.id, D.clubs[g.id].name); s.step = 2; }
+    var o = ORGS.filter(function (x) { return slug(x[0]) === target; })[0];
+    if (type === 'club' && !g && o) { setTarget(orgId(o[0]), o[0]); s.step = 2; }
   })();
 
   function head(n, title, lead) {
@@ -87,12 +90,11 @@
       }).join('') + '</div>';
     } else {
       var isClass = s.type === 'class';
-      body = (isClass ? '' : '<div class="chips">' + GROUPS.map(function (g) {
-        return '<button class="chip" type="button" data-target="' + g.id + '" data-name="' + esc(D.clubs[g.id].name) + '">' + esc(g.name) + '</button>';
-      }).join('') + '</div>') +
-        '<form class="field" data-other><label for="other">' + (isClass ? 'Course code or name' : 'Or type another club or group') + '</label>' +
-        '<div class="field-row"><input id="other" type="text" maxlength="80" autocomplete="off" placeholder="' + (isClass ? 'e.g. COS 126' : 'e.g. Debate Panel') + '">' +
-        '<button class="btn pill" type="submit">Next' + icon('arrow') + '</button></div></form>';
+      body = '<form class="field" data-other><label for="other">' + (isClass ? 'Course code or name' : 'Search for the club or group') + '</label>' +
+        '<div class="field-row"><input id="other" type="text" maxlength="80" autocomplete="off" placeholder="' + (isClass ? 'e.g. COS 126' : 'Start typing, e.g. Triangle') + '">' +
+        '<button class="btn pill" type="submit">Next' + icon('arrow') + '</button></div>' +
+        (isClass ? '' : '<p class="hint">Can’t find it? Type its full name and press Next.</p>') + '</form>' +
+        (isClass ? '' : '<div class="chips" id="matches" aria-live="polite"></div>');
     }
     var titles = { eating: 'Which eating club?', club: 'Which club or group?', 'class': 'Which class?' };
     return backBtn() + head(2, titles[s.type]) + body;
@@ -153,12 +155,23 @@
     if (ev.target.closest('[data-again]')) { s = { step: 0, type: null, target: null, targetName: '', connection: null, answers: {}, classYear: '', error: '', sending: false }; return render(); }
   });
 
+  app.addEventListener('input', function (ev) {
+    var box = document.getElementById('matches');
+    if (ev.target.id !== 'other' || !box) return;
+    var q = ev.target.value.trim().toLowerCase();
+    box.innerHTML = q.length < 2 ? '' : ORGS.filter(function (o) { return o[0].toLowerCase().indexOf(q) >= 0; }).slice(0, 8).map(function (o) {
+      return '<button class="chip" type="button" data-target="' + orgId(o[0]) + '" data-name="' + esc(o[0]) + '">' + esc(o[0]) + '</button>';
+    }).join('');
+  });
+
   app.addEventListener('submit', function (ev) {
     ev.preventDefault();
     if (ev.target.hasAttribute('data-other')) {
       var name = document.getElementById('other').value.trim();
       if (name.length < 2 || !slug(name)) return;
-      setTarget(slug(name), name); s.step = 2; return render();
+      var exact = s.type === 'club' && ORGS.filter(function (o) { return o[0].toLowerCase() === name.toLowerCase(); })[0];
+      if (exact) name = exact[0];
+      setTarget(s.type === 'club' ? orgId(name) : slug(name), name); s.step = 2; return render();
     }
     if (!ev.target.hasAttribute('data-form') || s.sending) return;
     keepTyped();

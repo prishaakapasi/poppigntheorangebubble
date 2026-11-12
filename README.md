@@ -98,6 +98,7 @@ js/home.js        Home bubbles
 js/ask.js         Ask Pop chat
 js/club.js        Club cards
 js/quiz.js        Quiz
+js/orgs.js        All student groups (name, letter, category) for search and filters
 js/add.js         Add what you know (filtered questions)
 js/admin.js       Team review page
 add.html          Add what you know

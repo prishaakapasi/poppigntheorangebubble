@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
   try {
     const ids = await redis('LRANGE', 'approved:' + target, 0, 19);
     const items = (await getMany(ids)).map((s) => ({
-      connection: s.connection, classYear: s.classYear, answers: s.answers, reviewedAt: s.reviewedAt
+      targetName: s.targetName, connection: s.connection, classYear: s.classYear, answers: s.answers, reviewedAt: s.reviewedAt
     }));
     send(res, 200, { items });
   } catch (e) {

@@ -50,18 +50,65 @@
     // Eating club with no hand-written page yet: built from submissions.
     C = { category: 'Eating club', name: EATING[id].name, vibe: 'What students say about ' + EATING[id].name + ', added through “Add what you know.”', facts: [], cards: [], generated: true };
   }
+  var ORGS = window.POP_ORGS || [], PAGES = window.POP_ORG_PAGES || {};
+  function orgId(name) { return PAGES[name] || P.slug(name); }
+  if (!C && id) {
+    var hit = ORGS.filter(function (o) { return P.slug(o[0]) === id; })[0];
+    if (hit) C = { category: 'Student organization', name: hit[0], vibe: 'What students say about ' + hit[0] + ', added through “Add what you know.”', facts: [], cards: [], generated: true };
+  }
   if (!C) {
     document.title = 'Clubs · pop';
-    app.innerHTML = head('Clubs', 'Find your people', 'What each group is really like, from students who’ve been in them.') +
-      SECTIONS.map(function (s) {
-        var items = s.items.filter(function (it) { return CLUBS[it.id]; });
-        if (!items.length) return '';
-        return '<section class="dir-section"><h2 class="dir-title">' + esc(s.title) + '</h2><div class="dir-list">' +
-          items.map(function (it) { return row('clubs.html?club=' + it.id, it.icon, CLUBS[it.id].name, it.blurb); }).join('') +
-          (s.more ? '<a class="ask-link" href="' + s.more.href + '" style="display:inline-flex;align-items:center;gap:8px;margin-top:12px">' + icon('pin') + esc(s.more.label) + '</a>' : '') +
-          '</div></section>';
-      }).join('') +
-      '<a class="ask-link" href="quiz.html" style="display:inline-flex;align-items:center;gap:8px">' + icon('compass') + 'Not sure where to start? Take the club quiz</a>';
+    var CATS = window.POP_ORG_CATS || {};
+    var catOrder = ['arts', 'culture', 'business', 'tech', 'science', 'politics', 'media', 'hobbies', 'other'].filter(function (k) { return CATS[k]; });
+    var featured = SECTIONS.filter(function (s) { return s.title !== 'Pre-professional'; }).map(function (s) {
+      var items = s.items.filter(function (it) { return CLUBS[it.id]; });
+      return items.map(function (it) { return row('clubs.html?club=' + it.id, it.icon, CLUBS[it.id].name, it.blurb); }).join('');
+    }).join('');
+    app.innerHTML = head('Clubs', 'Find your people', 'Search for a group, or pick a category to browse.') +
+      '<div class="finder">' +
+        '<div class="field"><label class="sr-only" for="find">Search ' + ORGS.length + ' student groups</label>' +
+        '<div class="search-box">' + icon('search') + '<input id="find" type="text" autocomplete="off" placeholder="Search ' + ORGS.length + ' student groups"></div></div>' +
+        '<div class="chips" role="group" aria-label="Filter by category" id="filters">' + catOrder.map(function (k) {
+          return '<button class="chip" type="button" data-cat="' + k + '" aria-pressed="false">' + esc(CATS[k]) + '</button>';
+        }).join('') + '</div>' +
+      '</div>' +
+      '<div id="results" class="dir-results"></div>';
+    var results = document.getElementById('results');
+    var view = { q: '', cat: '', limit: 10 };
+    function show() {
+      var q = view.q.trim().toLowerCase();
+      if (q.length < 2 && !view.cat) {
+        results.innerHTML = '<section class="dir-section"><h2 class="dir-title">Start here: pages with student info</h2><div class="dir-list">' + featured + '</div>' +
+          '<div style="display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:12px">' +
+          '<a class="ask-link" href="clubs.html?view=street" style="display:inline-flex;align-items:center;gap:8px">' + icon('pin') + 'Eating clubs on the Street</a>' +
+          '<a class="ask-link" href="quiz.html" style="display:inline-flex;align-items:center;gap:8px">' + icon('compass') + 'Not sure? Take the club quiz</a></div></section>';
+        return;
+      }
+      var m = ORGS.filter(function (o) {
+        return (!view.cat || o[2] === view.cat) && (q.length < 2 || o[0].toLowerCase().indexOf(q) >= 0);
+      });
+      if (!m.length) {
+        results.innerHTML = '<p class="card-text" role="status">No group matches' + (q.length >= 2 ? ' “' + esc(view.q.trim()) + '”' : '') + (view.cat ? ' in ' + esc(CATS[view.cat]) : '') + '. Try a different word or category.</p>';
+        return;
+      }
+      var shown = m.slice(0, view.limit);
+      results.innerHTML = '<section class="dir-section"><p class="az-note" role="status">' + m.length + (m.length === 1 ? ' group' : ' groups') + (view.cat ? ' in ' + esc(CATS[view.cat]) : '') + '</p>' +
+        '<div class="dir-list">' + shown.map(function (o) {
+          return row('clubs.html?club=' + orgId(o[0]), 'users', o[0], PAGES[o[0]] ? 'Has student info' : CATS[o[2]] || 'Student organization');
+        }).join('') + '</div>' +
+        (m.length > shown.length ? '<button class="btn pill outline" type="button" id="more" style="align-self:flex-start;margin-top:16px">Show ' + Math.min(10, m.length - shown.length) + ' more</button>' : '') +
+        '</section>';
+    }
+    document.getElementById('find').addEventListener('input', function (ev) { view.q = ev.target.value; view.limit = 10; show(); });
+    document.getElementById('filters').addEventListener('click', function (ev) {
+      var b = ev.target.closest('[data-cat]'); if (!b) return;
+      var k = b.getAttribute('data-cat');
+      view.cat = view.cat === k ? '' : k; view.limit = 10;
+      this.querySelectorAll('[data-cat]').forEach(function (x) { x.setAttribute('aria-pressed', String(x.getAttribute('data-cat') === view.cat)); });
+      show();
+    });
+    results.addEventListener('click', function (ev) { if (ev.target.closest('#more')) { view.limit += 10; show(); } });
+    show();
     return;
   }
 
@@ -155,7 +202,7 @@
         var who = 'From a student' + (s.classYear ? ' · Class of ’' + String(s.classYear).slice(-2) : '') + (CONNECTION[s.connection] ? ' · ' + CONNECTION[s.connection] : '');
         (s.answers || []).forEach(function (a) {
           if (!a.a || a.a.length < 3) return;
-          extra.push({ icon: a.kind === 'fact' ? 'key' : 'quote', kind: a.kind, label: a.label || 'From a student', text: a.a, by: who, long: a.a.length > 140 });
+          extra.push({ icon: a.kind === 'fact' ? 'key' : 'quote', kind: a.kind, label: (s.targetName && s.targetName !== C.name ? s.targetName + ' · ' : '') + (a.label || 'From a student'), text: a.a, by: who, long: a.a.length > 140 });
         });
       });
       if (!extra.length) return;

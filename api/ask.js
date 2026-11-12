@@ -80,14 +80,17 @@ module.exports = async (req, res) => {
     const answer = clean(out.answer, 700);
     const known = out.known === true && !!answer;
     let source = clean(out.source, 60).replace(/^\[?page:\s*/i, '').replace(/\]$/, '');
-    if (!D.clubs[source] && !D.eatingClubs.some((e) => e.id === source)) source = '';
+    const eating = D.eatingClubs.find((e) => e.id === source);
+    const sub = approved.find((s) => s.target === source);
+    let sourceName = D.clubs[source] ? D.clubs[source].name : eating ? eating.name : sub ? sub.targetName : '';
+    if (!sourceName) source = '';
     if (!known) {
       try {
         await redis('LPUSH', 'questions', JSON.stringify({ q: question, at: new Date().toISOString() }));
         await redis('LTRIM', 'questions', 0, 199);
       } catch (e) { /* fine without a DB */ }
     }
-    send(res, 200, { answer: answer || 'Pop doesn’t have student info on that yet.', known, source });
+    send(res, 200, { answer: answer || 'Pop doesn’t have student info on that yet.', known, source, sourceName });
   } catch (e) {
     send(res, 502, { error: 'Pop’s AI didn’t respond.' });
   }
