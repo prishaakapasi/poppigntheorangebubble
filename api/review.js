@@ -1,5 +1,5 @@
 /* /api/review — for the team only (needs the ADMIN_KEY).
-   GET: pending submissions and questions Ask Pop couldn't answer.
+   GET: pending submissions.
    POST { id, action: "approve" | "reject" }: publish or delete a submission. */
 const { redis, cors, send, body, clean, isAdmin, getMany } = require('./_lib');
 
@@ -9,8 +9,7 @@ module.exports = async (req, res) => {
   try {
     if (req.method === 'GET') {
       const pending = await getMany(await redis('LRANGE', 'pending', 0, 49));
-      const questions = (await redis('LRANGE', 'questions', 0, 49)).map((q) => { try { return JSON.parse(q); } catch (e) { return null; } }).filter(Boolean);
-      return send(res, 200, { pending, questions });
+      return send(res, 200, { pending });
     }
     if (req.method === 'POST') {
       const b = body(req);

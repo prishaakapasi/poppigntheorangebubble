@@ -39,4 +39,7 @@
   }
 
   showBubble();
+
+  var find = document.getElementById('find');
+  if (find && window.POP_ORGS) find.placeholder = 'Search ' + window.POP_ORGS.length + ' clubs and groups…';
 })();

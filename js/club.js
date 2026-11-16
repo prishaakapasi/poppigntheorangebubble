@@ -74,7 +74,8 @@
       '</div>' +
       '<div id="results" class="dir-results"></div>';
     var results = document.getElementById('results');
-    var view = { q: '', cat: '', limit: 10 };
+    var view = { q: (params.get('q') || '').slice(0, 80), cat: '', limit: 10 };
+    document.getElementById('find').value = view.q;
     function show() {
       var q = view.q.trim().toLowerCase();
       if (q.length < 2 && !view.cat) {
@@ -131,7 +132,7 @@
     '</div>' +
     '<section aria-label="About this club" id="cards-section"></section>' +
     '<div style="display:flex;flex-wrap:wrap;gap:12px 28px">' +
-      '<a class="ask-link" href="ask.html" style="display:inline-flex;align-items:center;gap:8px">' + icon('chat') + 'Have a question? Ask Pop</a>' +
+      '<a class="ask-link" href="faq.html" style="display:inline-flex;align-items:center;gap:8px">' + icon('help') + 'Questions? Read the FAQ</a>' +
       '<a class="ask-link" href="' + addHref + '" style="display:inline-flex;align-items:center;gap:8px">' + icon('plus') + 'Know this ' + (isEating ? 'club' : 'group') + '? Add what you know</a>' +
     '</div>';
 

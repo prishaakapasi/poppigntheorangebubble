@@ -61,7 +61,7 @@
       '<div class="rise"><p class="eyebrow">Your short list</p><h1>Three clubs worth a look.</h1>' +
       '<p style="margin:10px 0 0;color:var(--text-2)">Sample results for the prototype, based on your answers.</p></div>' +
       '<div class="results">' + list + '</div>' +
-      '<div class="results-actions"><a class="btn pill" href="ask.html">' + icon('chat') + 'Ask Pop about these</a>' +
+      '<div class="results-actions"><a class="btn pill" href="clubs.html">' + icon('users') + 'Browse all clubs</a>' +
       '<button class="link-btn" type="button" data-restart style="display:inline-flex;gap:6px;align-items:center">' + icon('refresh') + 'Retake the quiz</button></div>';
   }
 
