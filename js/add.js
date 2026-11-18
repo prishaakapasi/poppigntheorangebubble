@@ -8,8 +8,7 @@
 
   var TYPES = [
     { id: 'eating', t: 'An eating club', d: 'Bicker, sign-in, the vibe', icon: 'pin' },
-    { id: 'club', t: 'A club or group', d: 'Getting in, time, what it’s like', icon: 'users' },
-    { id: 'class', t: 'A class', d: 'Workload, tips, what it leads to', icon: 'book' }
+    { id: 'club', t: 'A club or group', d: 'Getting in, time, what it’s like', icon: 'users' }
   ];
   var CONNECTIONS = {
     eating: [['member', 'I’m a member'], ['applied', 'I went through bicker or sign-in'], ['friends', 'I have friends there or go often'], ['outside', 'I’m not connected to it']],
@@ -79,7 +78,7 @@
 
   function stepType() {
     return head(1, 'What do you know about?', 'Two minutes. Reviewed by the team before anything goes up, and never shown with your name.') +
-      '<div class="tiles three">' + TYPES.map(function (t) { return tile('data-type="' + t.id + '"', t.t, t.d, t.icon, s.type === t.id); }).join('') + '</div>';
+      '<div class="tiles">' + TYPES.map(function (t) { return tile('data-type="' + t.id + '"', t.t, t.d, t.icon, s.type === t.id); }).join('') + '</div>';
   }
 
   function stepTarget() {

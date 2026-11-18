@@ -1,6 +1,6 @@
 # pop · Popping the Orange Bubble
 
-An unofficial, student-written guide to Princeton: clubs, eating clubs, classes and deadlines, explained by the people in them.
+An unofficial, student-written guide to Princeton: clubs and eating clubs, explained by the people in them.
 
 **Problem:** Some students arrive at Princeton with a head start. Through family, summer programs or teams, they already know how things work. Everyone else spends freshman year figuring it out.
 
@@ -18,7 +18,7 @@ An unofficial, student-written guide to Princeton: clubs, eating clubs, classes 
 | Club page | `clubs.html` | Is one-card-at-a-time easier than a long page? What's missing? |
 | Find your clubs | `quiz.html` | Is a 4-tap quiz a useful way to discover clubs? |
 
-Classes and Timeline show a “coming soon” page (`soon.html`). The Ask Pop chatbot was removed in favor of the FAQ.
+The Ask Pop chatbot was removed in favor of the FAQ. Classes and Timeline pages were cut.
 
 ## Run it
 
@@ -59,7 +59,6 @@ js/shared.js      Nav, footer, icons, bubble illustration
 js/data.js        All prototype content
 js/home.js        Home bubbles
 js/faq.js         FAQ page
-js/soon.js        Coming soon pages (Classes, Timeline)
 js/club.js        Club cards
 js/quiz.js        Quiz
 js/orgs.js        All student groups (name, letter, category) for search and filters

@@ -73,8 +73,6 @@
         { label: 'Clubs', href: 'clubs.html', icon: 'users', id: 'clubs' },
     { label: 'Find your clubs', href: 'quiz.html', icon: 'compass', id: 'quiz' },
     { label: 'Explore the Street', href: 'clubs.html?view=street', icon: 'pin', id: 'street' },
-    { label: 'Classes', href: 'soon.html?page=classes', icon: 'book', id: 'classes' },
-    { label: 'Timeline', href: 'soon.html?page=timeline', icon: 'cal', id: 'timeline' },
     { label: 'FAQ', href: 'faq.html', icon: 'help', id: 'faq' }
   ];
 
