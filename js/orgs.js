@@ -1,7 +1,7 @@
 /* Student organizations sponsored by ODUS (public list, updated each August).
    Each entry: [name, letter it is filed under, category]. Categories were assigned from the
    group names, so fix any that look wrong. POP_ORG_PAGES maps groups that share a hand-written page. */
-window.POP_ORG_CATS = {"arts": "Arts & performance", "media": "Media & writing", "business": "Business & finance", "tech": "Tech & engineering", "science": "Science & academics", "politics": "Politics, law & advocacy", "culture": "Culture & identity", "hobbies": "Games, food & hobbies", "other": "Other"};
+window.POP_ORG_CATS = {"arts": "Arts & performance", "media": "Media & writing", "business": "Business & finance", "tech": "Tech & engineering", "science": "Science & academics", "politics": "Politics, law & advocacy", "culture": "Culture & identity", "hobbies": "Games, food & hobbies", "sports": "Club sports", "other": "Other"};
 window.POP_ORGS = [["Princeton ACM Group","A","tech"],
 ["Aerial Arts Club","A","arts"],
 ["African Students Association (PASA)","A","culture"],
@@ -430,5 +430,12 @@ window.POP_ORGS = [["Princeton ACM Group","A","tech"],
 ["Princeton Women in Computer Science","W","tech"],
 ["Women In Medicine","W","science"],
 ["WPRB","W","media"],
-["Young Democratic Socialists of America","Y","politics"]];
+["Young Democratic Socialists of America","Y","politics"],
+["Princeton University Glee Club","G","arts"],
+["Sinfonia","S","arts"],
+["Moral Ambition @ Princeton","M","other"],
+["Club Flag Football","C","sports"],
+["Club Tennis","C","sports"],
+["Men’s Rugby","M","sports"],
+["Men’s Club Soccer","M","sports"]];
 window.POP_ORG_PAGES = {"Naacho": "dance", "Princeton Bhangra": "dance", "Nassoons": "acappella", "Footnotes": "acappella", "The Princeton Tigertones": "acappella", "Roaring 20": "acappella", "Tigerlilies": "acappella", "Tigressions": "acappella", "Katzenjammers": "acappella", "Wildcats": "acappella", "Old NasSoul": "acappella", "Shere Khan": "acappella"};

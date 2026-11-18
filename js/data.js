@@ -54,7 +54,7 @@ window.POP_DATA = {
         { icon: 'music', label: 'All-female', title: 'Tigressions', text: 'All-female, and also one of the older groups. Eating club ties: not sure yet.' },
         { icon: 'music', label: 'Mixed gender', title: 'Katzenjammers', text: 'Jazzy sound, mixed gender. Not known for a particular eating club.' },
         { icon: 'music', label: 'All-female', title: 'Wildcats', text: 'All-female. Know them? Add what you know.' },
-        { icon: 'sparkle', label: 'R&B and soul', title: 'Old NasSoul', text: 'Not part of Acaprez. Low voice, mixed gender, singing R&B and soul.' },
+        { icon: 'sparkle', label: 'R&B and soul', title: 'Old NasSoul', text: 'Not part of Acaprez. A low-voice group singing R&B and soul, about 6 to 8 hours a week, with gigs, arch sings and travel. A member reports 5 of 65 were accepted last fall, describes it as caring, familial and high-energy, and says to love R&B and soul and be willing to learn.' },
         { icon: 'sparkle', label: 'Indie and alternative', title: 'Shere Khan', text: 'Not part of Acaprez. Mixed voice and mixed gender, with a more indie and alternative repertoire.' }
       ]
     },
@@ -82,6 +82,235 @@ window.POP_DATA = {
         { icon: 'users', kind: 'take', label: 'Who’s there', text: 'One member described it as roughly half athletes and half non-athletes. Membership changes a lot from class to class, so the best way to know is to visit and meet people yourself.' },
         { icon: 'sparkle', kind: 'take', label: 'Biggest tip', quote: '“Don’t be afraid to talk to people you don’t know, or who come from a different background than you. Having people from different groups in your corner really helps.”', by: 'From a Cottage member' },
         { icon: 'pin', kind: 'fact', label: 'The club', text: 'Beautiful, especially outside: volleyball, pickleball, cornhole and a big turf field.' }
+      ]
+    },
+
+    // ---- Added from the Nov 2026 club and eating club forms (no names, emails or positions) ----
+    "bodyhype": {
+      category: "Dance · auditions",
+      name: "BodyHype",
+      vibe: "A student-run dance company that puts on five sold-out shows every semester and raises money for a nonprofit at each one.",
+      facts: [["clock", "About 6 hrs a week"], ["key", "Audition"]],
+      updated: "Nov 2026",
+      cards: [
+        {"icon": "music", "kind": "fact", "label": "What it does", "text": "Five sold-out shows every semester. Each run includes a live auction, and all proceeds go to a nonprofit the company picks."},
+        {"icon": "clock", "kind": "fact", "label": "Time", "text": "About 8 hours of rehearsal over the semester for each piece you choose to be in, plus 2 hours of company rehearsal every week."},
+        {"icon": "key", "kind": "fact", "label": "Getting in", "text": "By audition. A member reports 13 dancers were accepted in the most recent fall cycle."},
+        {"icon": "sparkle", "kind": "take", "label": "Advice", "quote": "“Try your best at auditions, ask questions to the choreographer, and have FUN.”", "by": "From a member"},
+        {"icon": "users", "kind": "take", "label": "The culture", "text": "Collaborative, fun and creative.", "by": "From a member"}
+      ]
+    },
+    "disiac-dance-company": {
+      category: "Dance · auditions",
+      name: "diSiac Dance Company",
+      vibe: "Precise, disciplined dancing, with a culture built on laughter and cutting loose.",
+      facts: [["clock", "3–9 hrs a week"], ["key", "Audition"]],
+      updated: "Nov 2026",
+      cards: [
+        {"icon": "clock", "kind": "fact", "label": "Time", "text": "3 to 9 hours a week, depending on how many pieces you’re in."},
+        {"icon": "key", "kind": "fact", "label": "Getting in", "text": "A member reports 13 dancers were accepted last fall, and about 5 of roughly 30 in the spring."},
+        {"icon": "sparkle", "kind": "take", "label": "Who it’s for", "text": "People who enjoy dancing at a high level and want to challenge themselves and expand their abilities.", "by": "From a member"},
+        {"icon": "users", "kind": "take", "label": "The culture", "text": "A community of students dedicated to dancing together and enjoying each other’s company each week.", "by": "From a member"},
+        {"icon": "quote", "kind": "take", "label": "From a member", "quote": "“I’ve had nothing but the best of experiences in this company, and it has been fundamental to my Princeton experience.”", "by": "From a member"}
+      ]
+    },
+    "expressions-dance-company": {
+      category: "Dance · auditions",
+      name: "Expressions Dance Company",
+      vibe: "A student-choreographed dance company with one show each semester.",
+      facts: [["clock", "6+ hrs a week"], ["key", "Audition"]],
+      updated: "Nov 2026",
+      cards: [
+        {"icon": "music", "kind": "fact", "label": "What it does", "text": "Two shows a year, one per semester, choreographed and designed by students."},
+        {"icon": "clock", "kind": "fact", "label": "Time", "text": "Rehearsals come in two-hour blocks, and each block is a weekly commitment. The whole company rehearses together on Sundays at 10am, and social events often happen on weekends."},
+        {"icon": "key", "kind": "fact", "label": "Getting in", "text": "A member reports 10 dancers were accepted in the most recent fall cycle."},
+        {"icon": "sparkle", "kind": "take", "label": "What they look for", "quote": "“We are looking for passionate dancers who are willing to commit to our company culture, weekly rehearsals and share their creativity.”", "by": "From a member"},
+        {"icon": "quote", "kind": "take", "label": "From a member", "quote": "“It is a space where I get to choreograph and share my love of dance with people who have become some of my best friends on campus.”", "by": "From a member"}
+      ]
+    },
+    "princeton-university-glee-club": {
+      category: "Singing · auditions",
+      name: "Princeton University Glee Club",
+      vibe: "A faculty-led choir of about 80 to 90 singers performing choral repertoire.",
+      facts: [["clock", "5.5 hrs a week"], ["key", "Auditions in the first week of fall"]],
+      updated: "Nov 2026",
+      cards: [
+        {"icon": "music", "kind": "fact", "label": "What it does", "text": "A couple of concerts each year, plus collaborations with other universities and performing artists. Student officers also run social events and mini-trips."},
+        {"icon": "clock", "kind": "fact", "label": "Time", "text": "Rehearsals are 2 hours on Monday and Wednesday and an hour and a half on Friday."},
+        {"icon": "key", "kind": "fact", "label": "Getting in", "text": "Auditions are held in the first week of the fall semester. If you miss them, you can reach out to the directors. A member reports about 25 people were accepted last fall, and there’s no spring recruitment."},
+        {"icon": "users", "kind": "take", "label": "The culture", "quote": "“A smorgasbord of different people interested in singing, putting time aside to make music together.”", "by": "From a member"},
+        {"icon": "music", "kind": "take", "label": "Overlap", "text": "One member says there’s a lot of overlap with a cappella groups.", "by": "From a member"}
+      ]
+    },
+    "sinfonia": {
+      category: "Orchestra · auditions",
+      name: "Sinfonia",
+      vibe: "An orchestra that rehearses twice a week and performs in Richardson.",
+      facts: [["clock", "About 3 hrs a week"], ["key", "Audition"]],
+      updated: "Nov 2026",
+      cards: [
+        {"icon": "music", "kind": "fact", "label": "What it does", "text": "Rehearsals twice a week, and concerts with a chance to perform in Richardson."},
+        {"icon": "sparkle", "kind": "take", "label": "Advice", "quote": "“Practice before auditions.”", "by": "From a member"},
+        {"icon": "users", "kind": "take", "label": "The culture", "text": "Chill and fun.", "by": "From a member"}
+      ]
+    },
+    "princeton-pictures": {
+      category: "Film",
+      name: "Princeton Pictures",
+      vibe: "Members work on student film sets during the semester.",
+      facts: [["clock", "4–6 hrs a week"]],
+      updated: "Nov 2026",
+      cards: [
+        {"icon": "music", "kind": "fact", "label": "What members do", "text": "Members work on sets during the semester. One member is a creative consultant on a set this term."},
+        {"icon": "sparkle", "kind": "take", "label": "Advice", "quote": "“Have fun, be authentic.”", "by": "From a member"}
+      ]
+    },
+    "scholars-of-finance": {
+      category: "Finance · application",
+      name: "Scholars of Finance",
+      vibe: "A Leadership Development Program and Recruitment Bootcamp that help underclassmen prepare for finance recruiting.",
+      facts: [["clock", "2–6 hrs a week"], ["key", "Essays and a video"]],
+      updated: "Nov 2026",
+      cards: [
+        {"icon": "briefcase", "kind": "fact", "label": "What it does", "text": "Runs a Leadership Development Program and a Recruitment Bootcamp. Members say it prepares underclassmen for recruiting and teaches general finance knowledge."},
+        {"icon": "clock", "kind": "fact", "label": "Time", "text": "Members report 2 to 6 hours a week for meetings, plus pre-work for the boot camp. One calls the workload high."},
+        {"icon": "sparkle", "kind": "take", "label": "Advice for applying", "text": "Put real effort into the essays and the video. Show leadership and values as well as interest in finance, since those are at the core of the club. Be yourself, be personable, and talk to members.", "by": "From a member"},
+        {"icon": "users", "kind": "take", "label": "The culture", "text": "Members describe it as easygoing and super friendly.", "by": "From a member"},
+        {"icon": "quote", "kind": "take", "label": "From a member", "quote": "“I’ve gotten to meet a lot of different people, and have also gotten to think more about my own personal values through the Leadership Development Program.”", "by": "From a member"}
+      ]
+    },
+    "princeton-student-ventures": {
+      category: "Entrepreneurship · application",
+      name: "Princeton Student Ventures",
+      vibe: "A community of people interested in building out Princeton’s entrepreneurial ecosystem.",
+      facts: [["clock", "About 4 hrs a week"], ["key", "Application"]],
+      updated: "Nov 2026",
+      cards: [
+        {"icon": "briefcase", "kind": "fact", "label": "What it does", "text": "Supports student founders by investing in them."},
+        {"icon": "key", "kind": "fact", "label": "Getting in", "text": "A member reports 15 students were accepted in the most recent fall cycle."},
+        {"icon": "sparkle", "kind": "take", "label": "Advice", "quote": "“Be genuine and thoughtful.”", "by": "From a member"}
+      ]
+    },
+    "moral-ambition-princeton": {
+      category: "Social impact",
+      name: "Moral Ambition @ Princeton",
+      vibe: "The first university chapter of moralambition.org, for students who care about socially impactful work.",
+      facts: [["clock", "About 2 hrs a week"]],
+      updated: "Nov 2026",
+      cards: [
+        {"icon": "heart", "kind": "fact", "label": "What it is", "text": "The first-ever university chapter of moralambition.org. A member reports more than 250 people filled out the interest form and more than 125 are in the GroupMe."},
+        {"icon": "sparkle", "kind": "take", "label": "Advice", "text": "Show passion for social impact and public service.", "by": "From a member"},
+        {"icon": "users", "kind": "take", "label": "The culture", "quote": "“Frickin’ electric. You bond and develop with peers who value living socially impactful lives.”", "by": "From a member"},
+        {"icon": "arrow", "kind": "take", "label": "Where it leads", "text": "One member says it points toward public service.", "by": "From a member"}
+      ]
+    },
+    "club-flag-football": {
+      category: "Club sport · open to all",
+      name: "Club Flag Football",
+      vibe: "A way to keep playing competitively, with no application.",
+      facts: [["clock", "About 4 hrs a week"], ["door", "No application"]],
+      updated: "Nov 2026",
+      cards: [
+        {"icon": "users", "kind": "fact", "label": "How it works", "text": "You go to practice, and if you go to enough, you travel with the team for tournaments. There’s no need to apply."},
+        {"icon": "users", "kind": "take", "label": "The culture", "text": "Friendly, fun and energetic. A member calls it a super inviting atmosphere.", "by": "From a member"},
+        {"icon": "quote", "kind": "take", "label": "From a member", "quote": "“This was a great way to keep my competitive edge from playing football in high school while giving me some of the best friends I’ve had at this school.”", "by": "From a member"},
+        {"icon": "pin", "kind": "take", "label": "Eating clubs", "text": "One member says there’s no set path, but has seen a lot of teammates in Charter and Tiger Inn. That’s one person’s view and changes from year to year.", "by": "From a member"}
+      ]
+    },
+    "club-tennis": {
+      category: "Club sport · tryouts",
+      name: "Club Tennis",
+      vibe: "A selective travel team with a rotating roster of about 12, out of roughly 60 players in total.",
+      facts: [["clock", "0–8 hrs a week"], ["key", "Tryouts"]],
+      updated: "Nov 2026",
+      cards: [
+        {"icon": "users", "kind": "fact", "label": "What it does", "text": "Two-hour practices three nights a week, optional weekend tournaments, and team dinners."},
+        {"icon": "key", "kind": "take", "label": "Getting in", "text": "A member estimates about 10 of 100 made it in the fall and about 3 in the spring, and calls it “95% merit-based.” Their advice: be good at tennis.", "by": "From a member"},
+        {"icon": "users", "kind": "take", "label": "The culture", "text": "Very eclectic. Most people are there for the tennis, with a more engaged core group.", "by": "From a member"}
+      ]
+    },
+    "men-s-rugby": {
+      category: "Club sport · open to all",
+      name: "Men’s Rugby",
+      vibe: "Anyone can join, and there’s a strong social side.",
+      facts: [["clock", "4 hrs off-season, 11 in season"], ["door", "Open to all"]],
+      updated: "Nov 2026",
+      cards: [
+        {"icon": "users", "kind": "fact", "label": "What it does", "text": "Practice three times a week almost year-round, lifts twice a week, and usually one game a week in the fall and spring. There are frequent social events too."},
+        {"icon": "key", "kind": "take", "label": "Getting playing time", "text": "Anybody can join. To get playing time, be consistent at practice and at lifts, including in the off-season.", "by": "From a member"},
+        {"icon": "users", "kind": "take", "label": "The culture", "text": "Generally welcoming, with its own groups like any team. A member says upperclassmen are friendly and willing to talk to younger players, and describes the team as “a little fratty.”", "by": "From a member"},
+        {"icon": "quote", "kind": "take", "label": "From a member", "quote": "“Probably one of the coolest things I’ve ever done. Great social community, felt right at home as soon as I joined.”", "by": "From a member"},
+        {"icon": "arrow", "kind": "take", "label": "Where it leads", "text": "One member has seen a lot of teammates in Tiger Inn and Ivy, and going into investment banking and finance. That’s one person’s view and changes from year to year.", "by": "From a member"}
+      ]
+    },
+    "men-s-club-soccer": {
+      category: "Club sport · tryouts",
+      name: "Men’s Club Soccer",
+      vibe: "Two or three trainings a week, weekend games, and frequent social events.",
+      facts: [["clock", "4–8 hrs a week, not compulsory"], ["key", "Tryouts"]],
+      updated: "Nov 2026",
+      cards: [
+        {"icon": "users", "kind": "fact", "label": "What it does", "text": "2 to 3 training sessions a week plus a game on the weekend. Occasional tournaments last 2 to 3 days and are paid for."},
+        {"icon": "clock", "kind": "take", "label": "Time", "text": "Nothing is compulsory, but you usually need to be going to practice to play in weekend games and tournaments.", "by": "From a member"},
+        {"icon": "key", "kind": "take", "label": "Getting in", "text": "Tryouts are competitive because a lot of people try out. One member says decent high school experience is enough to have a shot, and estimates 10 to 15 made it last fall.", "by": "From a member"},
+        {"icon": "users", "kind": "take", "label": "The culture", "text": "A supportive group with good leadership and frequent social events. One member says there’s no hazing.", "by": "From a member"}
+      ]
+    },
+    "cap-and-gown": {
+      category: "Eating club · bicker",
+      name: "Cap and Gown",
+      vibe: "Bicker is two days of conversations, and a member says the community shows up for each other.",
+      facts: [["key", "Bicker club"], ["clock", "2-day bicker"]],
+      updated: "Nov 2026",
+      cards: [
+        {"icon": "key", "kind": "fact", "label": "How bicker works", "text": "Two days of conversations in 1.5-hour blocks. A member calls it “super chill.” Bicker happens in both the fall and the spring."},
+        {"icon": "sparkle", "kind": "take", "label": "Biggest tip", "quote": "“Be genuine and patient and believe in yourself! People are turned off by bickerees who seem so anxious they say insensitive or rude things.”", "by": "From a member"},
+        {"icon": "users", "kind": "take", "label": "The environment", "text": "During bicker: energized, nervous and curious.", "by": "From a member"},
+        {"icon": "gauge", "kind": "take", "label": "How many get in", "text": "A member guesses about 100 people are accepted in the spring and about 10 in the fall.", "by": "From a member"},
+        {"icon": "heart", "kind": "take", "label": "Favorite part", "quote": "“The community! People show up for each other!”", "by": "From a member"}
+      ]
+    },
+    "terrace": {
+      category: "Eating club · sign-in",
+      name: "Terrace",
+      vibe: "A sign-in club a member calls super open and welcoming.",
+      facts: [["door", "Sign-in club"], ["music", "Live bands"]],
+      updated: "Nov 2026",
+      cards: [
+        {"icon": "door", "kind": "fact", "label": "How sign-in works", "text": "You sign in by ranking Terrace as your top choice."},
+        {"icon": "sparkle", "kind": "take", "label": "Biggest tip", "quote": "“Be yourself and have fun with it!”", "by": "From a member"},
+        {"icon": "users", "kind": "take", "label": "The environment", "quote": "“Super open and welcoming with some of the nicest people on campus.”", "by": "From a member"},
+        {"icon": "users", "kind": "take", "label": "Who’s there", "quote": "“Honestly there’s a little bit of everything. I feel like every person I’ve met has a different involvement on campus.”", "by": "From a member"},
+        {"icon": "heart", "kind": "take", "label": "Favorite parts", "text": "A member’s favorite part is the food. Their favorite events are the live bands, especially Battle of the Bands.", "by": "From a member"}
+      ]
+    },
+    "quadrangle": {
+      category: "Eating club · sign-in",
+      name: "Quadrangle",
+      vibe: "A member describes Quad as very chill and welcoming.",
+      facts: [["door", "Sign-in club"], ["cal", "Two social events to join"]],
+      updated: "Nov 2026",
+      cards: [
+        {"icon": "door", "kind": "fact", "label": "How getting in works", "text": "You have to attend two social events."},
+        {"icon": "sparkle", "kind": "take", "label": "Biggest tip", "quote": "“Be yourself and try and get to know the vibe of each club.”", "by": "From a member"},
+        {"icon": "users", "kind": "take", "label": "The environment", "text": "Very chill and welcoming.", "by": "From a member"},
+        {"icon": "users", "kind": "take", "label": "Who’s there", "text": "One member has seen a lot of dance people, some a cappella people, and a lot of members in pre-professional clubs. That’s one person’s view and changes from year to year.", "by": "From a member"},
+        {"icon": "heart", "kind": "take", "label": "Favorite parts", "text": "The people. A favorite event: Quad STG.", "by": "From a member"}
+      ]
+    },
+    "cannon-dial-elm": {
+      category: "Eating club · bicker",
+      name: "Cannon Dial Elm",
+      vibe: "A bicker club where, according to one member, a lot of members play varsity sports.",
+      facts: [["key", "Bicker club"]],
+      updated: "Nov 2026",
+      cards: [
+        {"icon": "key", "kind": "take", "label": "How bicker works", "quote": "“Basically rated speed dating.”", "by": "From a member"},
+        {"icon": "sparkle", "kind": "take", "label": "Biggest tip", "quote": "“Be your authentic self and make it obvious you are on a sports team.”", "by": "From a member"},
+        {"icon": "users", "kind": "take", "label": "The environment", "text": "One member describes the club as very divided by sports team, and calls nights out “mid.” That’s one person’s view and changes from year to year.", "by": "From a member"},
+        {"icon": "users", "kind": "take", "label": "Who’s there", "text": "One member says many members play varsity sports.", "by": "From a member"},
+        {"icon": "gauge", "kind": "take", "label": "How many get in", "text": "A member guesses about 450 people bickered last cycle and about 200 were accepted.", "by": "From a member"},
+        {"icon": "heart", "kind": "take", "label": "Favorite parts", "text": "The food. A favorite event: fight night.", "by": "From a member"}
       ]
     }
   },

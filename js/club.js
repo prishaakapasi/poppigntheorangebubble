@@ -52,6 +52,7 @@
   }
   var ORGS = window.POP_ORGS || [], PAGES = window.POP_ORG_PAGES || {};
   function orgId(name) { return PAGES[name] || P.slug(name); }
+  function hasInfo(name) { return !!(PAGES[name] || CLUBS[P.slug(name)]); }
   if (!C && id) {
     var hit = ORGS.filter(function (o) { return P.slug(o[0]) === id; })[0];
     if (hit) C = { category: 'Student organization', name: hit[0], vibe: 'What students say about ' + hit[0] + ', added through “Add what you know.”', facts: [], cards: [], generated: true };
@@ -59,7 +60,7 @@
   if (!C) {
     document.title = 'Clubs · pop';
     var CATS = window.POP_ORG_CATS || {};
-    var catOrder = ['arts', 'culture', 'business', 'tech', 'science', 'politics', 'media', 'hobbies', 'other'].filter(function (k) { return CATS[k]; });
+    var catOrder = ['arts', 'culture', 'business', 'tech', 'science', 'politics', 'media', 'hobbies', 'sports', 'other'].filter(function (k) { return CATS[k]; });
     var featured = SECTIONS.filter(function (s) { return s.title !== 'Pre-professional'; }).map(function (s) {
       var items = s.items.filter(function (it) { return CLUBS[it.id]; });
       return items.map(function (it) { return row('clubs.html?club=' + it.id, it.icon, CLUBS[it.id].name, it.blurb); }).join('');
@@ -68,7 +69,8 @@
       '<div class="finder">' +
         '<div class="field"><label class="sr-only" for="find">Search ' + ORGS.length + ' student groups</label>' +
         '<div class="search-box">' + icon('search') + '<input id="find" type="text" autocomplete="off" placeholder="Search ' + ORGS.length + ' student groups"></div></div>' +
-        '<div class="chips" role="group" aria-label="Filter by category" id="filters">' + catOrder.map(function (k) {
+        '<div class="chips" role="group" aria-label="Filter by category" id="filters">' +
+          '<button class="chip" type="button" data-cat="info" aria-pressed="false">' + icon('sparkle') + 'Has student info</button>' + catOrder.map(function (k) {
           return '<button class="chip" type="button" data-cat="' + k + '" aria-pressed="false">' + esc(CATS[k]) + '</button>';
         }).join('') + '</div>' +
       '</div>' +
@@ -86,16 +88,18 @@
         return;
       }
       var m = ORGS.filter(function (o) {
-        return (!view.cat || o[2] === view.cat) && (q.length < 2 || o[0].toLowerCase().indexOf(q) >= 0);
+        return (!view.cat || (view.cat === 'info' ? hasInfo(o[0]) : o[2] === view.cat)) && (q.length < 2 || o[0].toLowerCase().indexOf(q) >= 0);
       });
+      m = m.filter(function (o) { return hasInfo(o[0]); }).concat(m.filter(function (o) { return !hasInfo(o[0]); }));
+      var where = !view.cat ? '' : view.cat === 'info' ? ' with student info' : ' in ' + esc(CATS[view.cat]);
       if (!m.length) {
-        results.innerHTML = '<p class="card-text" role="status">No group matches' + (q.length >= 2 ? ' “' + esc(view.q.trim()) + '”' : '') + (view.cat ? ' in ' + esc(CATS[view.cat]) : '') + '. Try a different word or category.</p>';
+        results.innerHTML = '<p class="card-text" role="status">No group matches' + (q.length >= 2 ? ' “' + esc(view.q.trim()) + '”' : '') + where + '. Try a different word or category.</p>';
         return;
       }
       var shown = m.slice(0, view.limit);
-      results.innerHTML = '<section class="dir-section"><p class="az-note" role="status">' + m.length + (m.length === 1 ? ' group' : ' groups') + (view.cat ? ' in ' + esc(CATS[view.cat]) : '') + '</p>' +
+      results.innerHTML = '<section class="dir-section"><p class="az-note" role="status">' + m.length + (m.length === 1 ? ' group' : ' groups') + where + '</p>' +
         '<div class="dir-list">' + shown.map(function (o) {
-          return row('clubs.html?club=' + orgId(o[0]), 'users', o[0], PAGES[o[0]] ? 'Has student info' : CATS[o[2]] || 'Student organization');
+          return row('clubs.html?club=' + orgId(o[0]), 'users', o[0], hasInfo(o[0]) ? 'Has student info' : CATS[o[2]] || 'Student organization');
         }).join('') + '</div>' +
         (m.length > shown.length ? '<button class="btn pill outline" type="button" id="more" style="align-self:flex-start;margin-top:16px">Show ' + Math.min(10, m.length - shown.length) + ' more</button>' : '') +
         '</section>';
