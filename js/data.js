@@ -330,13 +330,12 @@ window.POP_DATA = {
     'Shere Khan': ['Website', 'https://sherekhanprinceton.wixsite.com/sherekhan']
   },
 
-  // The eleven eating clubs. Clubs without a hand-written page still get one,
+  // The ten active eating clubs. Clubs without a hand-written page still get one,
   // built from approved "Add what you know" submissions.
   eatingClubs: [
     { id: 'cannon-dial-elm', name: 'Cannon Dial Elm' },
     { id: 'cap-and-gown', name: 'Cap and Gown' },
     { id: 'charter', name: 'Charter' },
-    { id: 'cloister', name: 'Cloister' },
     { id: 'colonial', name: 'Colonial' },
     { id: 'cottage', name: 'Cottage' },
     { id: 'ivy', name: 'Ivy' },
