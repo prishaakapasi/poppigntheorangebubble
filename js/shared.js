@@ -1,4 +1,4 @@
-/* Shared helpers: nav, footer, icons, bubble art.
+/* Shared helpers: nav, icons, bubble art.
    Plain script (no build step), so the site works by opening index.html. */
 (function () {
   var ICONS = {
@@ -95,17 +95,9 @@
     });
   }
 
-  function renderFooter(el) {
-    el.className = 'site-footer';
-    el.innerHTML = '<div class="container"><span>Made by students, for every freshman.</span>' +
-      '<span>Not affiliated with Princeton University.</span></div>';
-  }
-
   document.addEventListener('DOMContentLoaded', function () {
     var header = document.querySelector('[data-header]');
     if (header) renderHeader(header, header.getAttribute('data-header'));
-    var footer = document.querySelector('[data-footer]');
-    if (footer) renderFooter(footer);
   });
 
   function slug(t) { return String(t).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60); }
