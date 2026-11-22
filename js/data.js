@@ -24,13 +24,13 @@ window.POP_DATA = {
       facts: [['music', '10 groups'], ['users', 'Low voice, mixed & all-female'], ['key', 'Auditions']],
       updated: 'Nov 2026',
       cards: [
-        { icon: 'music', label: 'Low voice', title: 'Nassoons', text: 'Low voice, currently all men. The oldest group, mostly Cap, and known for a very strong alumni network.' },
-        { icon: 'music', label: 'Low voice', title: 'Footnotes', text: 'Low voice, mixed gender. Fun, upbeat music with a wide range of repertoire. Members are a mix of TI, Cap and Terrace.' },
-        { icon: 'music', label: 'Low voice', title: 'Tigertones', text: 'Low voice, currently all men. Eating club ties: not sure yet.' },
-        { icon: 'music', label: 'Mixed voice', title: 'Roaring 20', text: 'Co-ed, mixed voice and mixed gender. Eating club ties: not sure yet.' },
-        { icon: 'music', label: 'All-female', title: 'Tigerlilies', text: 'The oldest all-female group. Eating club ties: not sure yet.' },
-        { icon: 'music', label: 'All-female', title: 'Tigressions', text: 'All-female, and also one of the older groups. Eating club ties: not sure yet.' },
-        { icon: 'music', label: 'Mixed gender', title: 'Katzenjammers', text: 'Jazzy sound, mixed gender. Not known for a particular eating club.' },
+        { icon: 'music', label: 'Low voice', title: 'Nassoons', text: 'Low voice, currently all men. The oldest group, known for a very strong alumni network.' },
+        { icon: 'music', label: 'Low voice', title: 'Footnotes', text: 'Low voice, mixed gender. Fun, upbeat music with a wide range of repertoire.' },
+        { icon: 'music', label: 'Low voice', title: 'Tigertones', text: 'Low voice, currently all men.' },
+        { icon: 'music', label: 'Mixed voice', title: 'Roaring 20', text: 'Co-ed, mixed voice and mixed gender.' },
+        { icon: 'music', label: 'All-female', title: 'Tigerlilies', text: 'The oldest all-female group.' },
+        { icon: 'music', label: 'All-female', title: 'Tigressions', text: 'All-female, and also one of the older groups.' },
+        { icon: 'music', label: 'Mixed gender', title: 'Katzenjammers', text: 'Jazzy sound, mixed gender.' },
         { icon: 'music', label: 'All-female', title: 'Wildcats', text: 'All-female. Know them? Add what you know.' },
         { icon: 'sparkle', label: 'R&B and soul', title: 'Old NasSoul', text: 'Not part of Acaprez. A low-voice group singing R&B and soul, about 6 to 8 hours a week, with gigs, arch sings and travel. A member reports 5 of 65 were accepted last fall, describes it as caring, familial and high-energy, and says to love R&B and soul and be willing to learn.' },
         { icon: 'sparkle', label: 'Indie and alternative', title: 'Shere Khan', text: 'Not part of Acaprez. Mixed voice and mixed gender, with a more indie and alternative repertoire.' }
@@ -45,7 +45,6 @@ window.POP_DATA = {
       cards: [
         { icon: 'key', kind: 'fact', label: 'Getting in', text: 'Auditions are skill-based, but they mean it when they say you don’t need prior experience. Dance somewhat decently and show potential.' },
         { icon: 'users', kind: 'take', label: 'The vibe', text: 'Both groups are pretty laid back. PB (Princeton Bhangra) is a bit more tight-knit than Naacho.' },
-        { icon: 'pin', kind: 'take', label: 'Eating clubs', text: 'One student’s view: these two groups don’t lean strongly toward any eating club right now. Lately PB has had more Tower members and Naacho more Charter, but that shifts from year to year.' },
         { icon: 'sparkle', kind: 'take', label: 'From a student', quote: '“Dance groups can be a good community!”', by: 'From a student · details can change year to year' }
       ]
     },
@@ -191,8 +190,7 @@ window.POP_DATA = {
       cards: [
         {"icon": "users", "kind": "fact", "label": "How it works", "text": "You go to practice, and if you go to enough, you travel with the team for tournaments. There’s no need to apply."},
         {"icon": "users", "kind": "take", "label": "The culture", "text": "Friendly, fun and energetic. A member calls it a super inviting atmosphere.", "by": "From a member"},
-        {"icon": "quote", "kind": "take", "label": "From a member", "quote": "“This was a great way to keep my competitive edge from playing football in high school while giving me some of the best friends I’ve had at this school.”", "by": "From a member"},
-        {"icon": "pin", "kind": "take", "label": "Eating clubs", "text": "One member says there’s no set path, but has seen a lot of teammates in Charter and Tiger Inn. That’s one person’s view and changes from year to year.", "by": "From a member"}
+        {"icon": "quote", "kind": "take", "label": "From a member", "quote": "“This was a great way to keep my competitive edge from playing football in high school while giving me some of the best friends I’ve had at this school.”", "by": "From a member"}
       ]
     },
     "club-tennis": {
@@ -218,7 +216,7 @@ window.POP_DATA = {
         {"icon": "key", "kind": "take", "label": "Getting playing time", "text": "Anybody can join. To get playing time, be consistent at practice and at lifts, including in the off-season.", "by": "From a member"},
         {"icon": "users", "kind": "take", "label": "The culture", "text": "Generally welcoming, with its own groups like any team. A member says upperclassmen are friendly and willing to talk to younger players, and describes the team as “a little fratty.”", "by": "From a member"},
         {"icon": "quote", "kind": "take", "label": "From a member", "quote": "“Probably one of the coolest things I’ve ever done. Great social community, felt right at home as soon as I joined.”", "by": "From a member"},
-        {"icon": "arrow", "kind": "take", "label": "Where it leads", "text": "One member has seen a lot of teammates in Tiger Inn and Ivy, and going into investment banking and finance. That’s one person’s view and changes from year to year.", "by": "From a member"}
+        {"icon": "arrow", "kind": "take", "label": "Where it leads", "text": "One member has seen a lot of teammates go into investment banking and finance. That’s one person’s view and changes from year to year.", "by": "From a member"}
       ]
     },
     "men-s-club-soccer": {
