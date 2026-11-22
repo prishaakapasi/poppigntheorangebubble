@@ -279,7 +279,17 @@ button { font: inherit; color: inherit; }
 }
 
 /* Home links, FAQ */
-.hero-links { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 15px; font-weight: 600; margin: 0; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
+.btn.big { min-height: 58px; padding: 0 28px; font-size: 17px; }
+.hero-cta .btn:not(.outline) { box-shadow: 4px 4px 0 var(--orange); }
+.hero-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; max-width: 620px; }
+.hero-card { display: flex; align-items: center; gap: 14px; padding: 14px 16px; background: var(--surface); border: 1px solid var(--hairline); border-radius: 14px; text-decoration: none; transition: border-color .15s, transform .15s; }
+.hero-card:hover { border-color: var(--ink); transform: translateY(-1px); color: var(--ink); }
+.hero-card > span:nth-child(2) { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.hero-card-icon { width: 40px; height: 40px; flex: none; border-radius: 50%; background: var(--pill); color: var(--orange-ink); display: flex; align-items: center; justify-content: center; }
+.hero-card-title { font-size: 16px; font-weight: 600; }
+.hero-card-sub { font-size: 13px; line-height: 1.35; color: var(--muted); }
+.hero-card > .icon { color: var(--muted); }
 .faq-list { display: flex; flex-direction: column; }
 .faq { border-top: 1px solid var(--hairline); }
 .faq:last-child { border-bottom: 1px solid var(--hairline); }

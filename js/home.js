@@ -40,6 +40,6 @@
 
   showBubble();
 
-  var find = document.getElementById('find');
-  if (find && window.POP_ORGS) find.placeholder = 'Search ' + window.POP_ORGS.length + ' clubs and groups…';
+  var browse = document.getElementById('browse');
+  if (browse && window.POP_ORGS) browse.textContent = 'Browse all ' + window.POP_ORGS.length + ' groups';
 })();
