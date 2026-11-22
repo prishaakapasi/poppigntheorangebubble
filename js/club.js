@@ -9,17 +9,6 @@
   var EATING = {};
   D.eatingClubs.forEach(function (e) { EATING[e.id] = e; });
 
-  var SECTIONS = [
-    { title: 'Performing arts', items: [
-      { id: 'dance', icon: 'music', blurb: 'Dance groups: skill-based auditions, no experience needed' },
-      { id: 'acappella', icon: 'music', blurb: 'Eight Acaprez groups plus Old NasSoul and Shere Khan' }] },
-    { title: 'Eating clubs', items: [
-      { id: 'cottage', icon: 'pin', blurb: 'Bicker club · two days of quick conversations' }],
-      more: { href: 'clubs.html?view=street', label: 'See all eating clubs on the Street' } },
-    { title: 'Pre-professional', items: [
-      { id: 'consulting', icon: 'briefcase', blurb: 'Sample club for the prototype' }] }
-  ];
-
   function row(href, iconName, name, blurb, muted) {
     return '<a class="dir-row' + (muted ? ' muted' : '') + '" href="' + href + '">' +
       '<span class="dir-icon">' + icon(iconName) + '</span>' +
@@ -61,10 +50,25 @@
     document.title = 'Clubs · pop';
     var CATS = window.POP_ORG_CATS || {};
     var catOrder = ['arts', 'culture', 'business', 'tech', 'science', 'politics', 'media', 'hobbies', 'sports', 'other'].filter(function (k) { return CATS[k]; });
-    var featured = SECTIONS.filter(function (s) { return s.title !== 'Pre-professional'; }).map(function (s) {
-      var items = s.items.filter(function (it) { return CLUBS[it.id]; });
-      return items.map(function (it) { return row('clubs.html?club=' + it.id, it.icon, CLUBS[it.id].name, it.blurb); }).join('');
-    }).join('');
+    // "Start here": six pages with student info, mixed across categories and reshuffled on each visit.
+    var eatingIds = {};
+    D.eatingClubs.forEach(function (e) { eatingIds[e.id] = true; });
+    var infoPages = Object.keys(CLUBS).filter(function (k) { return k !== 'consulting' && !eatingIds[k]; });
+    var infoCount = ORGS.filter(function (o) { return hasInfo(o[0]); }).length;
+    function pickFeatured() {
+      var byKind = {}, order = [];
+      infoPages.slice().sort(function () { return Math.random() - 0.5; }).forEach(function (k) {
+        var kind = CLUBS[k].category.split(' · ')[0];
+        if (!byKind[kind]) { byKind[kind] = []; order.push(kind); }
+        byKind[kind].push(k);
+      });
+      var out = [];
+      while (out.length < 6 && order.some(function (kind) { return byKind[kind].length; })) {
+        order.forEach(function (kind) { if (out.length < 6 && byKind[kind].length) out.push(byKind[kind].shift()); });
+      }
+      return out.map(function (k) { return row('clubs.html?club=' + k, 'users', CLUBS[k].name, CLUBS[k].category); }).join('');
+    }
+    var featured = pickFeatured();
     app.innerHTML = head('Clubs', 'Find your people', 'Search for a group, or pick a category to browse.') +
       '<div class="finder">' +
         '<div class="field"><label class="sr-only" for="find">Search ' + ORGS.length + ' student groups</label>' +
@@ -76,13 +80,15 @@
       '</div>' +
       '<div id="results" class="dir-results"></div>';
     var results = document.getElementById('results');
-    var view = { q: (params.get('q') || '').slice(0, 80), cat: '', limit: 10 };
+    var startCat = params.get('cat') || '';
+    var view = { q: (params.get('q') || '').slice(0, 80), cat: startCat === 'info' || CATS[startCat] ? startCat : '', limit: 10 };
     document.getElementById('find').value = view.q;
     function show() {
       var q = view.q.trim().toLowerCase();
       if (q.length < 2 && !view.cat) {
-        results.innerHTML = '<section class="dir-section"><h2 class="dir-title">Start here: pages with student info</h2><div class="dir-list">' + featured + '</div>' +
-          '<div style="display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:12px">' +
+        results.innerHTML = '<section class="dir-section"><h2 class="dir-title">Start here: a few groups students have written about</h2><div class="dir-list">' + featured + '</div>' +
+          '<div style="display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:16px;align-items:center">' +
+          '<button class="btn pill outline" type="button" id="all-info">' + icon('sparkle') + 'See all ' + infoCount + ' with student info</button>' +
           '<a class="ask-link" href="clubs.html?view=street" style="display:inline-flex;align-items:center;gap:8px">' + icon('pin') + 'Eating clubs on the Street</a>' +
           '<a class="ask-link" href="quiz.html" style="display:inline-flex;align-items:center;gap:8px">' + icon('compass') + 'Not sure? Take the club quiz</a></div></section>';
         return;
@@ -105,15 +111,22 @@
         '</section>';
     }
     document.getElementById('find').addEventListener('input', function (ev) { view.q = ev.target.value; view.limit = 10; show(); });
-    document.getElementById('filters').addEventListener('click', function (ev) {
+    var filters = document.getElementById('filters');
+    function setCat(k) {
+      view.cat = k; view.limit = 10;
+      filters.querySelectorAll('[data-cat]').forEach(function (x) { x.setAttribute('aria-pressed', String(x.getAttribute('data-cat') === view.cat)); });
+      show();
+    }
+    filters.addEventListener('click', function (ev) {
       var b = ev.target.closest('[data-cat]'); if (!b) return;
       var k = b.getAttribute('data-cat');
-      view.cat = view.cat === k ? '' : k; view.limit = 10;
-      this.querySelectorAll('[data-cat]').forEach(function (x) { x.setAttribute('aria-pressed', String(x.getAttribute('data-cat') === view.cat)); });
-      show();
+      setCat(view.cat === k ? '' : k);
     });
-    results.addEventListener('click', function (ev) { if (ev.target.closest('#more')) { view.limit += 10; show(); } });
-    show();
+    results.addEventListener('click', function (ev) {
+      if (ev.target.closest('#more')) { view.limit += 10; show(); }
+      if (ev.target.closest('#all-info')) { setCat('info'); window.scrollTo(0, 0); }
+    });
+    setCat(view.cat);
     return;
   }
 
@@ -126,6 +139,20 @@
   var back = isEating ? ['clubs.html?view=street', 'All eating clubs'] : ['clubs.html', 'All clubs'];
   var addHref = 'add.html?type=' + (isEating ? 'eating' : 'club') + '&target=' + encodeURIComponent(id);
 
+  // Links out to the group's own website (js/data.js: sites). Groups we have no
+  // verified link for get a web search instead.
+  function ext(href, label, ic) {
+    return '<a class="ask-link" href="' + esc(href) + '" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px">' + icon(ic || 'external') + esc(label) + '</a>';
+  }
+  function siteLinks() {
+    var list = (D.sites || {})[id];
+    if (list && list.length) {
+      return list.map(function (s) { return ext(s[1], s[0]); }).join('');
+    }
+    if (C.cards.some(function (k) { return k.title && (D.cardSites || {})[k.title]; })) return '';
+    return ext('https://www.google.com/search?q=' + encodeURIComponent('Princeton ' + C.name), 'Search the web for this group', 'search');
+  }
+
   app.innerHTML =
     '<a class="back-link" href="' + back[0] + '">' + icon('left') + back[1] + '</a>' +
     '<div class="club-head">' +
@@ -137,6 +164,7 @@
     '<section aria-label="About this club" id="cards-section"></section>' +
     '<div style="display:flex;flex-wrap:wrap;gap:12px 28px">' +
       '<a class="ask-link" href="faq.html" style="display:inline-flex;align-items:center;gap:8px">' + icon('help') + 'Questions? Read the FAQ</a>' +
+      siteLinks() +
       '<a class="ask-link" href="' + addHref + '" style="display:inline-flex;align-items:center;gap:8px">' + icon('plus') + 'Know this ' + (isEating ? 'club' : 'group') + '? Add what you know</a>' +
     '</div>';
 
@@ -184,7 +212,8 @@
     card.innerHTML = c.quote
       ? '<figure class="card-inner slide">' + label + '<blockquote>' + esc(c.quote) + '</blockquote><figcaption>' + esc(c.by) + '</figcaption></figure>'
       : c.title
-        ? '<div class="card-inner slide">' + label + '<h2 class="statement" style="font-weight:400">' + esc(c.title) + '</h2><p class="card-text">' + esc(c.text) + '</p></div>'
+        ? '<div class="card-inner slide">' + label + '<h2 class="statement" style="font-weight:400">' + esc(c.title) + '</h2><p class="card-text">' + esc(c.text) + '</p>' +
+          ((D.cardSites || {})[c.title] ? '<a class="card-site" href="' + esc(D.cardSites[c.title][1]) + '" target="_blank" rel="noopener">' + icon('external') + esc(D.cardSites[c.title][0]) + '</a>' : '') + '</div>'
         : '<div class="card-inner slide">' + label + '<p class="statement' + (c.long ? ' long' : '') + '">' + esc(c.text) + '</p>' + (c.by ? '<p class="card-by">' + esc(c.by) + '</p>' : '') + '</div>';
     section.querySelectorAll('.dots span').forEach(function (d, k) { d.className = k === i ? 'on' : ''; });
     document.getElementById('prev').hidden = i === 0;

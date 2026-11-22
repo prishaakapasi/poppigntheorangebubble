@@ -16,7 +16,7 @@ An unofficial, student-written guide to Princeton: clubs and eating clubs, expla
 | Home | `index.html` | First impression, brand, does the search box invite a first step? |
 | FAQ | `faq.html` | Do short answers to common questions cover what students want to know? |
 | Club page | `clubs.html` | Is one-card-at-a-time easier than a long page? What's missing? |
-| Find your clubs | `quiz.html` | Is a 4-tap quiz a useful way to discover clubs? |
+| Find your clubs | `quiz.html` | Is a short quiz a useful way to discover clubs? It matches against every group in `js/orgs.js`. |
 
 The Ask Pop chatbot was removed in favor of the FAQ. Classes and Timeline pages were cut.
 

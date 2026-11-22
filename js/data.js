@@ -315,6 +315,43 @@ window.POP_DATA = {
     }
   },
 
+  // Links to each group's own website. Every link here was checked in Nov 2026.
+  // Format: page id -> [[label, url], ...]. Groups not listed get a web search link instead.
+  sites: {
+    'cannon-dial-elm': [['Visit their website', 'http://www.cannonclub.com']],
+    'cap-and-gown': [['Visit their website', 'https://www.capandgownclub.org/']],
+    charter: [['Visit their website', 'https://charterclub.org']],
+    colonial: [['Visit their website', 'http://www.colonialclub.com']],
+    cottage: [['Visit their website', 'https://cottageclub.net/about-folder']],
+    ivy: [['Visit their website', 'https://theivyclub.org']],
+    quadrangle: [['Visit their website', 'https://www.quadrangleclub.org/students.html']],
+    terrace: [['Visit their website', 'https://princetonterraceclub.org/about']],
+    'tiger-inn': [['Visit their website', 'http://www.tigerinn.net']],
+    tower: [['Visit their website', 'https://princetontowerclub.com/']],
+    bodyhype: [['Visit their website', 'https://www.bodyhypedance.com']],
+    'disiac-dance-company': [['Their Instagram', 'https://www.instagram.com/disiacdance/']],
+    dance: [['Naacho’s website', 'https://naacho.princeton.edu/'], ['Princeton Bhangra on Instagram', 'https://www.instagram.com/princetonbhangra/']],
+    'princeton-university-glee-club': [['Visit their website', 'https://princetongleeclub.com/glee-club']],
+    sinfonia: [['Visit their website', 'https://sinfonia.princeton.edu']],
+    'princeton-pictures': [['Visit their website', 'https://film.princeton.edu']],
+    'princeton-student-ventures': [['Visit their website', 'https://psv.vc']],
+    'moral-ambition-princeton': [['Moral Ambition’s Princeton page', 'https://www.moralambition.org/fellowships/university-fellowship-at-princeton']],
+    'men-s-rugby': [['Visit their website', 'https://princetonrugby.com']]
+  },
+  // For pages that cover several groups: card title -> [label, url].
+  cardSites: {
+    'Nassoons': ['Website', 'http://www.nassoons.com'],
+    'Footnotes': ['Website', 'https://www.princetonfootnotes.com'],
+    'Tigertones': ['Website', 'http://www.tigertones.com'],
+    'Roaring 20': ['Website', 'https://www.princetonroaring20.com'],
+    'Tigerlilies': ['Website', 'https://www.putigerlilies.com'],
+    'Tigressions': ['Website', 'http://www.theprincetontigressions.com'],
+    'Katzenjammers': ['Website', 'http://www.theprincetonkatzenjammers.com'],
+    'Wildcats': ['Website', 'https://www.princetonwildcats.com'],
+    'Old NasSoul': ['Website', 'https://www.nassoul.com'],
+    'Shere Khan': ['Website', 'https://sherekhanprinceton.wixsite.com/sherekhan']
+  },
+
   // The eleven eating clubs. Clubs without a hand-written page still get one,
   // built from approved "Add what you know" submissions.
   eatingClubs: [
@@ -335,32 +372,90 @@ window.POP_DATA = {
   apiBase: location.hostname.endsWith('github.io') ? 'https://poppigntheorangebubble.vercel.app' : '',
 
   // Quiz: four questions, then a short list.
-  quiz: [
-    { q: 'What are you into?', opts: [
-      { t: 'Business & consulting', d: 'Cases, markets, startups', k: 'biz' },
-      { t: 'Tech & building', d: 'Code, robots, hackathons', k: 'tech' },
-      { t: 'Arts & performance', d: 'Stage, film, music', k: 'arts' },
-      { t: 'Service & advocacy', d: 'Tutoring, policy, causes', k: 'serve' }] },
-    { q: 'How much time do you want to give a club each week?', opts: [
-      { t: '1–2 hrs', d: 'Just dipping in', k: '1–2 hrs' },
-      { t: '3–5 hrs', d: 'A real commitment', k: '3–5 hrs' },
-      { t: '6–10 hrs', d: 'It’s my thing', k: '6–10 hrs' },
-      { t: 'Whatever it takes', d: 'All in', k: 'lots of time' }] },
-    { q: 'How do you feel about applying?', opts: [
-      { t: 'Bring on the interviews', d: 'Selective is fine', k: 'selective' },
-      { t: 'I’d rather just show up', d: 'Open to everyone', k: 'open' },
-      { t: 'Either works', d: 'Depends on the club', k: 'either' },
-      { t: 'Not sure yet', d: 'Show me both', k: 'either' }] },
-    { q: 'What kind of group feels right?', opts: [
-      { t: 'Small and tight-knit', d: 'Everyone knows everyone', k: 'small' },
-      { t: 'Big community', d: 'Lots of new people', k: 'big' },
-      { t: 'Somewhere in between', d: 'A bit of both', k: 'mid' },
-      { t: 'Don’t mind', d: 'The work matters more', k: 'mid' }] }
-  ],
-  quizResults: {
-    biz: [['Strategy & Consulting Group', 'clubs.html'], ['Investment Society', '#'], ['Startup Studio', '#']],
-    tech: [['Hackers Guild', '#'], ['Robotics Team', '#'], ['App Studio', '#']],
-    arts: [['Naacho', 'clubs.html?club=dance', false, 'Dance · audition, no experience needed · laid back'], ['Princeton Bhangra', 'clubs.html?club=dance', false, 'Dance · audition, no experience needed · tight-knit'], ['A cappella & singing groups', 'clubs.html?club=acappella', false, 'Singing · 8 Acaprez groups plus Old NasSoul and Shere Khan']],
-    serve: [['Tutoring Collective', '#'], ['Debate Union', '#'], ['Environmental Action', '#']]
+  // Find your clubs quiz. It matches against every group in js/orgs.js.
+  // Step 1 picks categories, step 2 (when present) narrows by words in the group's name,
+  // and the last three steps rank groups that have student info (see quizMeta).
+  quiz: {
+    interests: [
+      { k: 'arts', t: 'Performing & arts', d: 'Dance, music, theater, film', icon: 'music', cats: ['arts'],
+        follow: { q: 'What kind of arts?', opts: [
+          { t: 'Dance', d: 'Any style', icon: 'sparkle', re: 'danc|ballet|bhangra|naacho|bodyhype|disiac|sympoh|raqs|raas|triple 8|high steppers|mas flow|koko pops|six14|black arts|tango|aerial|kalaa' },
+          { t: 'Singing & music', d: 'A cappella, choirs, bands', icon: 'music', re: 'nassoons|footnotes|tigertones|roaring 20|tigerlilies|tigressions|katzenjammers|wildcats|nassoul|shere khan|acapellago|glee|gospel|music|band|ensemble|sinfonia|opera|camerata|chamber|cello|pianist|guitar|saxophone|beatbox|mariachi|taiko|composers|dj club|electronica|jam sessions|koleinu|swara|tarana|vtone' },
+          { t: 'Theater & comedy', d: 'Plays, improv, stand-up', icon: 'users', re: 'theat|players|triangle|intime|playwright|improv|comedy|quipfire|fuzzy dice|lobster|basement|funny|cjl play' },
+          { t: 'Film & visual arts', d: 'Film, fashion, making things', icon: 'eye', re: 'film|pictures|hollywood|sketchbook|fashion|off-rack|architecture|crochet|woodcarving|blacksmith|ebru|green creatives|p pop up' }] } },
+      { k: 'business', t: 'Business & finance', d: 'Markets, consulting, startups', icon: 'briefcase', cats: ['business'],
+        follow: { q: 'Which side of business?', opts: [
+          { t: 'Finance & investing', d: 'Markets, funds, trading', icon: 'gauge', re: 'financ|capital|invest|equity|trader|quant|real estate|emerging markets' },
+          { t: 'Consulting', d: 'Cases and client projects', icon: 'briefcase', re: 'consult' },
+          { t: 'Startups', d: 'Building and funding ideas', icon: 'sparkle', re: 'entrepreneur|e-club|ventures|founded|vc|tamid' },
+          { t: 'Not sure yet', d: 'Show me a mix', icon: 'help', re: '' }] } },
+      { k: 'tech', t: 'Tech & engineering', d: 'Code, robots, rockets', icon: 'code', cats: ['tech'],
+        follow: { q: 'What do you want to build?', opts: [
+          { t: 'Software & AI', d: 'Apps, data, security', icon: 'code', re: 'acm|ai at|ai alignment|code|developer|computer|hoagie|tigerapps|data science|cyber|all tech|keyboard' },
+          { t: 'Robots, rockets & cars', d: 'Things that move', icon: 'compass', re: 'robot|rocket|rover|racing|speedboat|autonomous|neurotech|first@' },
+          { t: 'Engineering societies', d: 'Community and careers', icon: 'users', re: 'engineer|tau beta|quantum|resinde|envision' },
+          { t: 'Not sure yet', d: 'Show me a mix', icon: 'help', re: '' }] } },
+      { k: 'science', t: 'Science & academics', d: 'Pre-med, research, societies', icon: 'book', cats: ['science'],
+        follow: { q: 'Which area?', opts: [
+          { t: 'Medicine & health', d: 'Pre-med, public health', icon: 'heart', re: 'medic|medlife|health|dental|veterinar|msf|operation smile|hosa|blood cancer|resq|nightline|alzheimer|factual' },
+          { t: 'Physics, math & more', d: 'Physical sciences', icon: 'compass', re: 'physics|physicists|math|chem|astronom|geoscience|materials|science olympiad' },
+          { t: 'Bio, brain & mind', d: 'Biology, neuroscience, psychology', icon: 'leaf', re: 'bio|neuro|psycholog|mycology|soma' },
+          { t: 'Not sure yet', d: 'Show me a mix', icon: 'help', re: '' }] } },
+      { k: 'politics', t: 'Politics, law & advocacy', d: 'Debate, policy, causes', icon: 'flame', cats: ['politics'],
+        follow: { q: 'What draws you in?', opts: [
+          { t: 'Politics & debate', d: 'Parties, debate, policy', icon: 'users', re: 'democrat|republican|libertarian|socialist|debate|whig|model congress|political|policy|election|usg|international relations|hamilton' },
+          { t: 'Law', d: 'Mock trial, moot court', icon: 'key', re: 'law|legal|moot|mock trial|federalist|arguendo|ethics bowl' },
+          { t: 'Climate & environment', d: 'Energy, sustainability', icon: 'leaf', re: 'sunrise|conservation|energy|sustainab|net-zero|decarbonized|greening' },
+          { t: 'Not sure yet', d: 'Show me a mix', icon: 'help', re: '' }] } },
+      { k: 'media', t: 'Writing & media', d: 'News, magazines, radio', icon: 'quote', cats: ['media'],
+        follow: { q: 'What kind of writing or media?', opts: [
+          { t: 'News & opinion', d: 'Papers and political magazines', icon: 'book', re: 'daily princetonian|nassau weekly|tory|progressive|press club|tiger report|business today|policy punchline' },
+          { t: 'Creative & literary', d: 'Fiction, poetry, humor', icon: 'sparkle', re: 'nassau literary|tiger magazine|figments|glossa|moon press|ellipses|forword|fanfiction|arch and arrow|rah-rah|positions|seabird|manuscripts' },
+          { t: 'Radio & video', d: 'On air and on screen', icon: 'music', re: 'wprb|tiger media|tigertale|tedx|all-nighter|perspective' },
+          { t: 'Not sure yet', d: 'Show me a mix', icon: 'help', re: '' }] } },
+      { k: 'culture', t: 'Culture & community', d: 'Cultural, faith and identity groups', icon: 'heart', cats: ['culture'] },
+      { k: 'play', t: 'Sports & hobbies', d: 'Club sports, games, food', icon: 'compass', cats: ['sports', 'hobbies'],
+        follow: { q: 'What sounds fun?', opts: [
+          { t: 'Club sports', d: 'Practices and games', icon: 'flame', re: 'club flag|club tennis|rugby|club soccer|boxing|muay|aikido|pickleball|fitness' },
+          { t: 'Games', d: 'Board games, cards, gaming', icon: 'sparkle', re: 'chess|bridge|poker|scrabble|quiz bowl|puzzles|cube|lego|minecraft|magic|d&d|esports|simulation|mahjong|billiards' },
+          { t: 'Food & outdoors', d: 'Cooking, gardens, nature', icon: 'leaf', re: 'cook|baking|food|co-op|society of tea|chocolate|cheese|garden|farmers|birding|fishing' },
+          { t: 'Not sure yet', d: 'Show me a mix', icon: 'help', re: '' }] } }
+    ],
+    time: { q: 'How much time do you want to give it each week?', opts: [
+      { t: '1–2 hrs', d: 'Just dipping in', icon: 'leaf', range: [0, 2] },
+      { t: '3–5 hrs', d: 'A real commitment', icon: 'clock', range: [3, 5] },
+      { t: '6–10 hrs', d: 'It’s my thing', icon: 'flame', range: [6, 10] },
+      { t: 'Whatever it takes', d: 'All in', icon: 'sparkle', range: null }] },
+    apply: { q: 'How do you feel about applying or auditioning?', opts: [
+      { t: 'Bring it on', d: 'Selective is fine', icon: 'key', k: 'selective' },
+      { t: 'I’d rather just show up', d: 'Open to everyone', icon: 'door', k: 'open' },
+      { t: 'Either works', d: 'Depends on the group', icon: 'shuffle', k: 'either' },
+      { t: 'Not sure yet', d: 'Show me both', icon: 'help', k: 'either' }] },
+    goal: { q: 'What do you want most out of it?', opts: [
+      { t: 'Friends & community', d: 'People to belong with', icon: 'users', k: 'friends' },
+      { t: 'Skills & career', d: 'Something that leads somewhere', icon: 'briefcase', k: 'career' },
+      { t: 'A creative outlet', d: 'Make and express', icon: 'sparkle', k: 'creative' },
+      { t: 'To compete or perform', d: 'Shows, games, results', icon: 'flame', k: 'compete' }] }
+  },
+
+  // What the quiz knows about pages with student info: hours a week [min, max],
+  // how you get in ('audition', 'application', 'tryout' or 'open'), and what people get out of it.
+  // Leave a field out if students haven't told us.
+  quizMeta: {
+    dance: { entry: 'audition', goals: ['friends', 'compete'] },
+    acappella: { entry: 'audition', goals: ['friends', 'compete', 'creative'] },
+    bodyhype: { hours: [6, 6], entry: 'audition', goals: ['compete', 'creative', 'friends'] },
+    'disiac-dance-company': { hours: [3, 9], entry: 'audition', goals: ['compete', 'friends'] },
+    'expressions-dance-company': { hours: [6, 8], entry: 'audition', goals: ['creative', 'friends', 'compete'] },
+    'princeton-university-glee-club': { hours: [5, 6], entry: 'audition', goals: ['compete', 'friends'] },
+    sinfonia: { hours: [3, 3], entry: 'audition', goals: ['compete'] },
+    'princeton-pictures': { hours: [4, 6], goals: ['creative'] },
+    'scholars-of-finance': { hours: [2, 6], entry: 'application', goals: ['career'] },
+    'princeton-student-ventures': { hours: [4, 4], entry: 'application', goals: ['career'] },
+    'moral-ambition-princeton': { hours: [2, 2], goals: ['friends', 'career'] },
+    'club-flag-football': { hours: [4, 4], entry: 'open', goals: ['friends', 'compete'] },
+    'club-tennis': { hours: [0, 8], entry: 'tryout', goals: ['compete'] },
+    'men-s-rugby': { hours: [4, 11], entry: 'open', goals: ['friends', 'compete'] },
+    'men-s-club-soccer': { hours: [4, 8], entry: 'tryout', goals: ['friends', 'compete'] }
   }
 };

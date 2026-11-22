@@ -291,3 +291,13 @@ button { font: inherit; color: inherit; }
 .faq-a { padding: 0 4px 20px; display: flex; flex-direction: column; gap: 10px; max-width: 640px; }
 .faq-a p { margin: 0; font-size: 17px; line-height: 1.6; color: var(--text-2); }
 .faq-a a { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 600; }
+
+/* Quiz: eight interest tiles, and "why it fits" tags on results */
+.tile.compact { min-height: 88px; padding: 16px; }
+.tile.compact .t { font-size: 17px; }
+.results .fit { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 6px; font-size: 13px; font-weight: 600; color: var(--orange-ink); }
+.results .fit span { display: inline-flex; align-items: center; gap: 4px; }
+.results .fit .icon { width: 14px; height: 14px; }
+.quiz-panel h1:focus { outline: none; }
+.card .card-site { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 600; }
+.card .card-site .icon { width: 16px; height: 16px; }
