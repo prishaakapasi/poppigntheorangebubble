@@ -163,7 +163,6 @@
     '</div>' +
     '<section aria-label="About this club" id="cards-section"></section>' +
     '<div style="display:flex;flex-wrap:wrap;gap:12px 28px">' +
-      '<a class="ask-link" href="faq.html" style="display:inline-flex;align-items:center;gap:8px">' + icon('help') + 'Questions? Read the FAQ</a>' +
       siteLinks() +
       '<a class="ask-link" href="' + addHref + '" style="display:inline-flex;align-items:center;gap:8px">' + icon('plus') + 'Know this ' + (isEating ? 'club' : 'group') + '? Add what you know</a>' +
     '</div>';

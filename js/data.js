@@ -3,28 +3,6 @@
    student input as you collect it. */
 window.POP_DATA = {
 
-  // Frequently asked questions (faq.html). Edit, add or remove freely.
-  // Each item: q, a, and optionally link: [label, href].
-  faq: [
-    { title: 'Eating clubs', items: [
-      { q: 'What’s the difference between bicker and sign-in?', a: 'Bicker clubs pick their members after a few days of events and conversations. Sign-in clubs let you join by signing up, with a lottery if they fill up.' },
-      { q: 'Which clubs are bicker and which are sign-in?', a: 'As of the 2025–26 year, the bicker clubs are Cannon Dial Elm, Cap and Gown, Cottage, Ivy, Tiger Inn and Tower. Charter, Colonial, Quadrangle and Terrace are sign-in. Cloister has paused operations for renovations. This can change, so check with the clubs.', link: ['See all eating clubs', 'clubs.html?view=street'] },
-      { q: 'When do I actually join an eating club?', a: 'Most students join in the spring of sophomore year. As a freshman, you can visit clubs for meals and open events in the meantime.' },
-      { q: 'What’s Cottage bicker like?', a: 'It’s two days of quick, 5-minute conversations with lots of different members. One member’s biggest tip: talk to people you don’t know, including people from different backgrounds than you.', link: ['Cottage', 'clubs.html?club=cottage'] }
-    ] },
-    { title: 'Clubs and groups', items: [
-      { q: 'How do I find a club that fits me?', a: 'Search or filter all the student groups on the Clubs page, or take the short quiz if you don’t know where to start.', link: ['Browse clubs', 'clubs.html'] },
-      { q: 'Do I need dance experience for Naacho or Bhangra?', a: 'No. Auditions are skill-based, but students say you really don’t need prior experience. You just need to dance somewhat decently and show potential.', link: ['Naacho & Princeton Bhangra', 'clubs.html?club=dance'] },
-      { q: 'Which a cappella group is right for me?', a: 'There are eight Acaprez groups. Low voice: Nassoons and Tigertones (both currently all men) and Footnotes (mixed gender). All-female: Tigerlilies, Tigressions and Wildcats. Mixed: Roaring 20 and Katzenjammers. Outside Acaprez, Old NasSoul sings R&B and soul, and Shere Khan does indie and alternative.', link: ['All singing groups', 'clubs.html?club=acappella'] }
-    ] },
-    { title: 'About this site', items: [
-      { q: 'Who writes this?', a: 'Students. Everything here comes from current Princeton students sharing what they know. The site is not affiliated with Princeton University.' },
-      { q: 'How do I know it’s accurate?', a: 'Every answer is labeled Fact or Student take, and the team reviews submissions before they go up. A student take is one person’s experience, and clubs change from year to year, so use this alongside talking to people.' },
-      { q: 'A club I care about has no info. What can I do?', a: 'If you know the club, add what you know. It takes about two minutes and is anonymous. If you don’t, check back: pages fill in as students contribute.', link: ['Add what you know', 'add.html'] },
-      { q: 'Something here is wrong or unfair. How do I fix it?', a: 'Use “Add what you know” on that club’s page to send a correction. The team reviews it and updates the page.', link: ['Add what you know', 'add.html'] }
-    ] }
-  ],
-
   // Club pages: one card at a time. Open a club with clubs.html?club=<id>.
   clubs: {
     consulting: {

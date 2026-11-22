@@ -14,11 +14,10 @@ An unofficial, student-written guide to Princeton: clubs and eating clubs, expla
 | Page | File | What it tests |
 | --- | --- | --- |
 | Home | `index.html` | First impression, brand, does the search box invite a first step? |
-| FAQ | `faq.html` | Do short answers to common questions cover what students want to know? |
 | Club page | `clubs.html` | Is one-card-at-a-time easier than a long page? What's missing? |
 | Find your clubs | `quiz.html` | Is a short quiz a useful way to discover clubs? It matches against every group in `js/orgs.js`. |
 
-The Ask Pop chatbot was removed in favor of the FAQ. Classes and Timeline pages were cut.
+The Ask Pop chatbot, FAQ, Classes and Timeline pages were cut.
 
 ## Run it
 
@@ -43,22 +42,19 @@ No build step and no dependencies. Either:
 
 ## Editing content
 
-All prototype content is in **`js/data.js`**: the FAQ, club pages, quiz questions and quiz results. Edit text there; layouts pick it up automatically.
+All prototype content is in **`js/data.js`**: club pages, quiz questions and quiz results. Edit text there; layouts pick it up automatically.
 
-To change the FAQ, edit the `faq` list in `js/data.js`.
 
 ## Structure
 
 ```
 index.html        Home
-faq.html          FAQ
 clubs.html        Sample club page
 quiz.html         Find your clubs quiz
 css/styles.css    All styles (design tokens at the top)
 js/shared.js      Nav, footer, icons, bubble illustration
 js/data.js        All prototype content
 js/home.js        Home bubbles
-js/faq.js         FAQ page
 js/club.js        Club cards
 js/quiz.js        Quiz
 js/orgs.js        All student groups (name, letter, category) for search and filters

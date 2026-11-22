@@ -72,8 +72,7 @@
   var LINKS = [
         { label: 'Clubs', href: 'clubs.html', icon: 'users', id: 'clubs' },
     { label: 'Find your clubs', href: 'quiz.html', icon: 'compass', id: 'quiz' },
-    { label: 'Explore the Street', href: 'clubs.html?view=street', icon: 'pin', id: 'street' },
-    { label: 'FAQ', href: 'faq.html', icon: 'help', id: 'faq' }
+    { label: 'Explore the Street', href: 'clubs.html?view=street', icon: 'pin', id: 'street' }
   ];
 
   var LOGO = '<a class="logo" href="index.html" aria-label="pop, home"><span>p</span>' +

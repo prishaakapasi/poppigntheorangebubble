@@ -278,7 +278,7 @@ button { font: inherit; color: inherit; }
   #filters .chip { flex: none; }
 }
 
-/* Home links, FAQ */
+/* Home buttons and link cards */
 .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
 .btn.big { min-height: 58px; padding: 0 28px; font-size: 17px; }
 .hero-cta .btn:not(.outline) { box-shadow: 4px 4px 0 var(--orange); }
@@ -290,17 +290,6 @@ button { font: inherit; color: inherit; }
 .hero-card-title { font-size: 16px; font-weight: 600; }
 .hero-card-sub { font-size: 13px; line-height: 1.35; color: var(--muted); }
 .hero-card > .icon { color: var(--muted); }
-.faq-list { display: flex; flex-direction: column; }
-.faq { border-top: 1px solid var(--hairline); }
-.faq:last-child { border-bottom: 1px solid var(--hairline); }
-.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 4px; font-family: var(--serif); font-size: 22px; letter-spacing: -.01em; line-height: 1.25; }
-.faq summary::-webkit-details-marker { display: none; }
-.faq summary .icon { color: var(--muted); transition: transform .2s; }
-.faq[open] summary .icon { transform: rotate(180deg); }
-.faq summary:hover { background: var(--surface); }
-.faq-a { padding: 0 4px 20px; display: flex; flex-direction: column; gap: 10px; max-width: 640px; }
-.faq-a p { margin: 0; font-size: 17px; line-height: 1.6; color: var(--text-2); }
-.faq-a a { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 600; }
 
 /* Quiz: eight interest tiles, and "why it fits" tags on results */
 .tile.compact { min-height: 88px; padding: 16px; }
